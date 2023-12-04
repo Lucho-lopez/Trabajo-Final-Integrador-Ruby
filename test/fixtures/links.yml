@@ -1,0 +1,17 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  url: MyString
+  link_type: MyString
+  expires_at: 2023-12-02 14:10:27
+  link_password: MyString
+  unique_token: MyString
+  access_count: 1
+
+two:
+  url: MyString
+  link_type: MyString
+  expires_at: 2023-12-02 14:10:27
+  link_password: MyString
+  unique_token: MyString
+  access_count: 1
