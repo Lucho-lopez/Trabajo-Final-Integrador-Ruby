@@ -25,13 +25,30 @@ class LinksController < ApplicationController
     if !link 
       redirect_to root_path, alert: "El enlace no existe"
     end
+
     if link.link_type == "private"
-      rsedirect_to hacer que ponga contraseña
+      render "private"
+      return
     end
+
     if link.access_link()
       redirect_to link.url, allow_other_host: true
     end
     redirect_to root_path, alert: "El enlace no existe"
+  end
+
+  def validate_password
+    link = Link.find_by_unique_token(params[:unique_token])
+
+    if link
+      if link.link_type == 'private' && params[:password] == link.link_password
+        redirect_to link.url, allow_other_host: true
+      else
+        redirect_to root_path, alert: "Contraseña incorrecta"
+      end
+    else
+      redirect_to root_path, alert: "El enlace no existe"
+    end
   end
 
   # POST /links or /links.json

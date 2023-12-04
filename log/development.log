@@ -3097,3 +3097,342 @@ Completed 500 Internal Server Error in 11ms (ActiveRecord: 0.3ms | Allocations: 
 AbstractController::DoubleRenderError (Render and/or redirect were called multiple times in this action. Please note that you may only call render OR redirect, and at most once per action. Also note that neither redirect nor render terminate execution of the action, so if you want to exit an action after redirecting, you need to do something like "redirect_to(...); return".):
   
 app/controllers/links_controller.rb:34:in `redirect_to_url'
+Started GET "/l/285fb4" for 127.0.0.1 at 2023-12-04 00:13:36 -0300
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by LinksController#redirect_to_url as HTML
+  Parameters: {"unique_token"=>"[FILTERED]"}
+  [1m[36mLink Load (0.3ms)[0m  [1m[34mSELECT "links".* FROM "links" WHERE "links"."unique_token" = ? LIMIT ?[0m  [["unique_token", "[FILTERED]"], ["LIMIT", 1]]
+  ↳ app/models/link.rb:18:in `find_by_unique_token'
+  Rendering layout layouts/application.html.erb
+  Rendering links/private.html.erb within layouts/application
+  Rendered links/private.html.erb within layouts/application (Duration: 4.5ms | Allocations: 1566)
+  Rendered layout layouts/application.html.erb (Duration: 5.1ms | Allocations: 1692)
+Completed 500 Internal Server Error in 85ms (ActiveRecord: 3.3ms | Allocations: 23437)
+
+
+  
+ActionView::Template::Error (undefined method `validate_password_link_path' for #<ActionView::Base:0x0000000000c5f8>):
+    1: <%= form_with(url: validate_password_link_path(params[:unique_token]), method: :post) do |form| %>
+    2:   <div class="field">
+    3:     <%= form.label :password, "Contraseña" %>
+    4:     <%= form.password_field :password %>
+  
+app/views/links/private.html.erb:1
+app/controllers/links_controller.rb:30:in `redirect_to_url'
+Started GET "/l/285fb4" for 127.0.0.1 at 2023-12-04 00:14:03 -0300
+Processing by LinksController#redirect_to_url as HTML
+  Parameters: {"unique_token"=>"[FILTERED]"}
+  [1m[36mLink Load (0.3ms)[0m  [1m[34mSELECT "links".* FROM "links" WHERE "links"."unique_token" = ? LIMIT ?[0m  [["unique_token", "[FILTERED]"], ["LIMIT", 1]]
+  ↳ app/models/link.rb:18:in `find_by_unique_token'
+  Rendering layout layouts/application.html.erb
+  Rendering links/private.html.erb within layouts/application
+  Rendered links/private.html.erb within layouts/application (Duration: 2.8ms | Allocations: 1145)
+  Rendered layout layouts/application.html.erb (Duration: 3.3ms | Allocations: 1237)
+Completed 500 Internal Server Error in 44ms (ActiveRecord: 4.2ms | Allocations: 7342)
+
+
+  
+ActionView::Template::Error (undefined method `validate_password' for #<ActionView::Base:0x000000000111e8>):
+    1: <%= form_with(url: validate_password(params[:unique_token]), method: :post) do |form| %>
+    2:   <div class="field">
+    3:     <%= form.label :password, "Contraseña" %>
+    4:     <%= form.password_field :password %>
+  
+app/views/links/private.html.erb:1
+app/controllers/links_controller.rb:30:in `redirect_to_url'
+Started GET "/l/285fb4" for 127.0.0.1 at 2023-12-04 00:14:59 -0300
+Processing by LinksController#redirect_to_url as HTML
+  Parameters: {"unique_token"=>"[FILTERED]"}
+  [1m[36mLink Load (0.3ms)[0m  [1m[34mSELECT "links".* FROM "links" WHERE "links"."unique_token" = ? LIMIT ?[0m  [["unique_token", "[FILTERED]"], ["LIMIT", 1]]
+  ↳ app/models/link.rb:18:in `find_by_unique_token'
+  Rendering layout layouts/application.html.erb
+  Rendering links/private.html.erb within layouts/application
+  Rendered links/private.html.erb within layouts/application (Duration: 1.1ms | Allocations: 1137)
+  Rendered layout layouts/application.html.erb (Duration: 1.8ms | Allocations: 1229)
+Completed 500 Internal Server Error in 21ms (ActiveRecord: 2.5ms | Allocations: 7314)
+
+
+  
+ActionView::Template::Error (undefined method `validate_password_link_path' for #<ActionView::Base:0x00000000015d60>):
+    1: <%= form_with(url: validate_password_link_path(@unique_token), method: :post) do |form| %>
+    2:   <div class="field">
+    3:     <%= form.label :password, "Contraseña" %>
+    4:     <%= form.password_field :password %>
+  
+app/views/links/private.html.erb:1
+app/controllers/links_controller.rb:30:in `redirect_to_url'
+Started GET "/l/285fb4" for 127.0.0.1 at 2023-12-04 00:17:43 -0300
+Processing by LinksController#redirect_to_url as HTML
+  Parameters: {"unique_token"=>"[FILTERED]"}
+  [1m[36mLink Load (0.2ms)[0m  [1m[34mSELECT "links".* FROM "links" WHERE "links"."unique_token" = ? LIMIT ?[0m  [["unique_token", "[FILTERED]"], ["LIMIT", 1]]
+  ↳ app/models/link.rb:18:in `find_by_unique_token'
+  Rendering layout layouts/application.html.erb
+  Rendering links/private.html.erb within layouts/application
+  Rendered links/private.html.erb within layouts/application (Duration: 6.4ms | Allocations: 1290)
+  Rendered layout layouts/application.html.erb (Duration: 7.0ms | Allocations: 1382)
+Completed 500 Internal Server Error in 30ms (ActiveRecord: 2.8ms | Allocations: 7472)
+
+
+  
+ActionView::Template::Error (No route matches {:action=>"validate_password", :controller=>"links", :unique_token=>nil}, missing required keys: [:unique_token]):
+    1: <%= form_with(url: validate_password_link_path(@unique_token), method: :post) do |form| %>
+    2:   <div class="field">
+    3:     <%= form.label :password, "Contraseña" %>
+    4:     <%= form.password_field :password %>
+  
+app/views/links/private.html.erb:1
+app/controllers/links_controller.rb:30:in `redirect_to_url'
+Started GET "/l/285fb4" for 127.0.0.1 at 2023-12-04 00:18:50 -0300
+Processing by LinksController#redirect_to_url as HTML
+  Parameters: {"unique_token"=>"[FILTERED]"}
+  [1m[36mLink Load (0.2ms)[0m  [1m[34mSELECT "links".* FROM "links" WHERE "links"."unique_token" = ? LIMIT ?[0m  [["unique_token", "[FILTERED]"], ["LIMIT", 1]]
+  ↳ app/models/link.rb:18:in `find_by_unique_token'
+  Rendering layout layouts/application.html.erb
+  Rendering links/private.html.erb within layouts/application
+  Rendered links/private.html.erb within layouts/application (Duration: 1.4ms | Allocations: 1227)
+  Rendered layout layouts/application.html.erb (Duration: 1.7ms | Allocations: 1319)
+Completed 500 Internal Server Error in 18ms (ActiveRecord: 2.6ms | Allocations: 7401)
+
+
+  
+ActionView::Template::Error (No route matches {:action=>"validate_password", :controller=>"links", :unique_token=>nil}, missing required keys: [:unique_token]):
+    1: <%= form_with(url: validate_password_link_path(@unique_token), method: :post) do |form| %>
+    2:   <div class="field">
+    3:     <%= form.label :password, "Contraseña" %>
+    4:     <%= form.password_field :password %>
+  
+app/views/links/private.html.erb:1
+app/controllers/links_controller.rb:30:in `redirect_to_url'
+Started GET "/l/285fb4" for 127.0.0.1 at 2023-12-04 00:27:47 -0300
+Processing by LinksController#redirect_to_url as HTML
+  Parameters: {"unique_token"=>"[FILTERED]"}
+  [1m[36mLink Load (1.1ms)[0m  [1m[34mSELECT "links".* FROM "links" WHERE "links"."unique_token" = ? LIMIT ?[0m  [["unique_token", "[FILTERED]"], ["LIMIT", 1]]
+  ↳ app/models/link.rb:18:in `find_by_unique_token'
+  Rendering layout layouts/application.html.erb
+  Rendering links/private.html.erb within layouts/application
+  Rendered links/private.html.erb within layouts/application (Duration: 2.8ms | Allocations: 1140)
+  Rendered layout layouts/application.html.erb (Duration: 3.3ms | Allocations: 1232)
+Completed 500 Internal Server Error in 26ms (ActiveRecord: 1.6ms | Allocations: 6766)
+
+
+  
+ActionView::Template::Error (undefined method `l_path' for #<ActionView::Base:0x00000000024338>):
+    1: <%= form_with(url: l_path(@unique_token), method: :post) do |form| %>
+    2:   <div class="field">
+    3:     <%= form.label :password, "Contraseña" %>
+    4:     <%= form.password_field :password %>
+  
+app/views/links/private.html.erb:1
+app/controllers/links_controller.rb:30:in `redirect_to_url'
+Started GET "/l/285fb4" for 127.0.0.1 at 2023-12-04 00:28:06 -0300
+Processing by LinksController#redirect_to_url as HTML
+  Parameters: {"unique_token"=>"[FILTERED]"}
+  [1m[36mLink Load (0.3ms)[0m  [1m[34mSELECT "links".* FROM "links" WHERE "links"."unique_token" = ? LIMIT ?[0m  [["unique_token", "[FILTERED]"], ["LIMIT", 1]]
+  ↳ app/models/link.rb:18:in `find_by_unique_token'
+  Rendering layout layouts/application.html.erb
+  Rendering links/private.html.erb within layouts/application
+  Rendered links/private.html.erb within layouts/application (Duration: 1.5ms | Allocations: 1261)
+  Rendered layout layouts/application.html.erb (Duration: 1.9ms | Allocations: 1353)
+Completed 500 Internal Server Error in 21ms (ActiveRecord: 4.9ms | Allocations: 7432)
+
+
+  
+ActionView::Template::Error (No route matches {:action=>"validate_password", :controller=>"links", :unique_token=>nil}, missing required keys: [:unique_token]):
+    1: <%= form_with(url: validate_password_link_path(@unique_token), method: :post) do |form| %>
+    2:   <div class="field">
+    3:     <%= form.label :password, "Contraseña" %>
+    4:     <%= form.password_field :password %>
+  
+app/views/links/private.html.erb:1
+app/controllers/links_controller.rb:30:in `redirect_to_url'
+Started GET "/l/285fb4" for 127.0.0.1 at 2023-12-04 00:34:43 -0300
+Processing by LinksController#redirect_to_url as HTML
+  Parameters: {"unique_token"=>"[FILTERED]"}
+  [1m[36mLink Load (1.1ms)[0m  [1m[34mSELECT "links".* FROM "links" WHERE "links"."unique_token" = ? LIMIT ?[0m  [["unique_token", "[FILTERED]"], ["LIMIT", 1]]
+  ↳ app/models/link.rb:18:in `find_by_unique_token'
+  Rendering layout layouts/application.html.erb
+  Rendering links/private.html.erb within layouts/application
+  Rendered links/private.html.erb within layouts/application (Duration: 49.0ms | Allocations: 2028)
+  Rendered layout layouts/application.html.erb (Duration: 143.7ms | Allocations: 35879)
+Completed 500 Internal Server Error in 166ms (Views: 147.3ms | ActiveRecord: 1.6ms | Allocations: 42103)
+
+
+  
+NameError (undefined local variable or method `password' for #<Link id: 4, url: "https://www.twitch.tv/mafiosin410", link_type: "private", expires_at: "2023-12-14 11:01:00.000000000 +0000", link_password: [FILTERED], unique_token: [FILTERED], access_count: 0, created_at: "2023-12-04 00:52:50.211358000 +0000", updated_at: "2023-12-04 00:52:50.211358000 +0000">):
+  
+app/models/link.rb:28:in `access_link'
+app/controllers/links_controller.rb:33:in `redirect_to_url'
+Started GET "/l/285fb4" for 127.0.0.1 at 2023-12-04 00:40:30 -0300
+Processing by LinksController#redirect_to_url as HTML
+  Parameters: {"unique_token"=>"[FILTERED]"}
+  [1m[36mLink Load (0.1ms)[0m  [1m[34mSELECT "links".* FROM "links" WHERE "links"."unique_token" = ? LIMIT ?[0m  [["unique_token", "[FILTERED]"], ["LIMIT", 1]]
+  ↳ app/models/link.rb:18:in `find_by_unique_token'
+  Rendering layout layouts/application.html.erb
+  Rendering links/private.html.erb within layouts/application
+  Rendered links/private.html.erb within layouts/application (Duration: 2.6ms | Allocations: 1564)
+  Rendered layout layouts/application.html.erb (Duration: 29.4ms | Allocations: 14949)
+Completed 200 OK in 46ms (Views: 31.9ms | ActiveRecord: 2.1ms | Allocations: 21055)
+
+
+Started POST "/l/285fb4" for 127.0.0.1 at 2023-12-04 00:40:45 -0300
+Processing by LinksController#validate_password as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]", "password"=>"[FILTERED]", "commit"=>"Acceder", "unique_token"=>"[FILTERED]"}
+  [1m[36mLink Load (0.2ms)[0m  [1m[34mSELECT "links".* FROM "links" WHERE "links"."unique_token" = ? LIMIT ?[0m  [["unique_token", "[FILTERED]"], ["LIMIT", 1]]
+  ↳ app/models/link.rb:18:in `find_by_unique_token'
+Redirected to https://www.twitch.tv/mafiosin410
+Completed 302 Found in 4ms (ActiveRecord: 0.1ms | Allocations: 804)
+
+
+Started POST "/l/285fb4" for 127.0.0.1 at 2023-12-04 00:40:52 -0300
+Processing by LinksController#validate_password as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]", "password"=>"[FILTERED]", "commit"=>"Acceder", "unique_token"=>"[FILTERED]"}
+  [1m[36mLink Load (0.1ms)[0m  [1m[34mSELECT "links".* FROM "links" WHERE "links"."unique_token" = ? LIMIT ?[0m  [["unique_token", "[FILTERED]"], ["LIMIT", 1]]
+  ↳ app/models/link.rb:18:in `find_by_unique_token'
+Redirected to https://www.twitch.tv/mafiosin410
+Completed 302 Found in 4ms (ActiveRecord: 0.1ms | Allocations: 708)
+
+
+Started POST "/l/285fb4" for 127.0.0.1 at 2023-12-04 00:40:59 -0300
+Processing by LinksController#validate_password as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]", "password"=>"[FILTERED]", "commit"=>"Acceder", "unique_token"=>"[FILTERED]"}
+  [1m[36mLink Load (0.2ms)[0m  [1m[34mSELECT "links".* FROM "links" WHERE "links"."unique_token" = ? LIMIT ?[0m  [["unique_token", "[FILTERED]"], ["LIMIT", 1]]
+  ↳ app/models/link.rb:18:in `find_by_unique_token'
+Redirected to https://www.twitch.tv/mafiosin410
+Completed 302 Found in 3ms (ActiveRecord: 0.1ms | Allocations: 711)
+
+
+Started POST "/l/285fb4" for 127.0.0.1 at 2023-12-04 00:41:02 -0300
+Processing by LinksController#validate_password as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]", "password"=>"[FILTERED]", "commit"=>"Acceder", "unique_token"=>"[FILTERED]"}
+  [1m[36mLink Load (0.1ms)[0m  [1m[34mSELECT "links".* FROM "links" WHERE "links"."unique_token" = ? LIMIT ?[0m  [["unique_token", "[FILTERED]"], ["LIMIT", 1]]
+  ↳ app/models/link.rb:18:in `find_by_unique_token'
+Redirected to https://www.twitch.tv/mafiosin410
+Completed 302 Found in 4ms (ActiveRecord: 0.1ms | Allocations: 711)
+
+
+Started POST "/l/285fb4" for 127.0.0.1 at 2023-12-04 00:41:53 -0300
+Processing by LinksController#validate_password as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]", "password"=>"[FILTERED]", "commit"=>"Acceder", "unique_token"=>"[FILTERED]"}
+  [1m[36mLink Load (0.2ms)[0m  [1m[34mSELECT "links".* FROM "links" WHERE "links"."unique_token" = ? LIMIT ?[0m  [["unique_token", "[FILTERED]"], ["LIMIT", 1]]
+  ↳ app/models/link.rb:18:in `find_by_unique_token'
+Redirected to https://www.twitch.tv/mafiosin410
+Completed 302 Found in 4ms (ActiveRecord: 0.1ms | Allocations: 720)
+
+
+Started POST "/l/285fb4" for 127.0.0.1 at 2023-12-04 00:41:53 -0300
+Processing by LinksController#validate_password as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]", "password"=>"[FILTERED]", "commit"=>"Acceder", "unique_token"=>"[FILTERED]"}
+  [1m[36mLink Load (0.1ms)[0m  [1m[34mSELECT "links".* FROM "links" WHERE "links"."unique_token" = ? LIMIT ?[0m  [["unique_token", "[FILTERED]"], ["LIMIT", 1]]
+  ↳ app/models/link.rb:18:in `find_by_unique_token'
+Redirected to https://www.twitch.tv/mafiosin410
+Completed 302 Found in 2ms (ActiveRecord: 0.1ms | Allocations: 693)
+
+
+Started POST "/l/285fb4" for 127.0.0.1 at 2023-12-04 00:41:53 -0300
+Processing by LinksController#validate_password as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]", "password"=>"[FILTERED]", "commit"=>"Acceder", "unique_token"=>"[FILTERED]"}
+  [1m[36mLink Load (0.1ms)[0m  [1m[34mSELECT "links".* FROM "links" WHERE "links"."unique_token" = ? LIMIT ?[0m  [["unique_token", "[FILTERED]"], ["LIMIT", 1]]
+  ↳ app/models/link.rb:18:in `find_by_unique_token'
+Redirected to https://www.twitch.tv/mafiosin410
+Completed 302 Found in 4ms (ActiveRecord: 0.1ms | Allocations: 699)
+
+
+Started POST "/l/285fb4" for 127.0.0.1 at 2023-12-04 00:41:53 -0300
+Processing by LinksController#validate_password as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]", "password"=>"[FILTERED]", "commit"=>"Acceder", "unique_token"=>"[FILTERED]"}
+  [1m[36mLink Load (0.1ms)[0m  [1m[34mSELECT "links".* FROM "links" WHERE "links"."unique_token" = ? LIMIT ?[0m  [["unique_token", "[FILTERED]"], ["LIMIT", 1]]
+  ↳ app/models/link.rb:18:in `find_by_unique_token'
+Redirected to https://www.twitch.tv/mafiosin410
+Completed 302 Found in 4ms (ActiveRecord: 0.1ms | Allocations: 693)
+
+
+Started POST "/l/285fb4" for 127.0.0.1 at 2023-12-04 00:41:57 -0300
+Processing by LinksController#validate_password as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]", "password"=>"[FILTERED]", "commit"=>"Acceder", "unique_token"=>"[FILTERED]"}
+  [1m[36mLink Load (0.1ms)[0m  [1m[34mSELECT "links".* FROM "links" WHERE "links"."unique_token" = ? LIMIT ?[0m  [["unique_token", "[FILTERED]"], ["LIMIT", 1]]
+  ↳ app/models/link.rb:18:in `find_by_unique_token'
+Redirected to https://www.twitch.tv/mafiosin410
+Completed 302 Found in 3ms (ActiveRecord: 0.1ms | Allocations: 717)
+
+
+Started POST "/l/285fb4" for 127.0.0.1 at 2023-12-04 00:41:58 -0300
+Processing by LinksController#validate_password as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]", "password"=>"[FILTERED]", "commit"=>"Acceder", "unique_token"=>"[FILTERED]"}
+  [1m[36mLink Load (0.1ms)[0m  [1m[34mSELECT "links".* FROM "links" WHERE "links"."unique_token" = ? LIMIT ?[0m  [["unique_token", "[FILTERED]"], ["LIMIT", 1]]
+  ↳ app/models/link.rb:18:in `find_by_unique_token'
+Redirected to https://www.twitch.tv/mafiosin410
+Completed 302 Found in 3ms (ActiveRecord: 0.1ms | Allocations: 708)
+
+
+Started POST "/l/285fb4" for 127.0.0.1 at 2023-12-04 00:41:58 -0300
+Processing by LinksController#validate_password as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]", "password"=>"[FILTERED]", "commit"=>"Acceder", "unique_token"=>"[FILTERED]"}
+  [1m[36mLink Load (0.3ms)[0m  [1m[34mSELECT "links".* FROM "links" WHERE "links"."unique_token" = ? LIMIT ?[0m  [["unique_token", "[FILTERED]"], ["LIMIT", 1]]
+  ↳ app/models/link.rb:18:in `find_by_unique_token'
+Redirected to https://www.twitch.tv/mafiosin410
+Completed 302 Found in 6ms (ActiveRecord: 0.3ms | Allocations: 714)
+
+
+Started POST "/l/285fb4" for 127.0.0.1 at 2023-12-04 00:42:26 -0300
+Processing by LinksController#validate_password as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]", "password"=>"[FILTERED]", "commit"=>"Acceder", "unique_token"=>"[FILTERED]"}
+  [1m[36mLink Load (0.1ms)[0m  [1m[34mSELECT "links".* FROM "links" WHERE "links"."unique_token" = ? LIMIT ?[0m  [["unique_token", "[FILTERED]"], ["LIMIT", 1]]
+  ↳ app/models/link.rb:18:in `find_by_unique_token'
+Redirected to https://www.twitch.tv/mafiosin410
+Completed 302 Found in 3ms (ActiveRecord: 0.1ms | Allocations: 687)
+
+
+Started POST "/l/285fb4" for 127.0.0.1 at 2023-12-04 00:45:04 -0300
+Processing by LinksController#validate_password as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]", "password"=>"[FILTERED]", "commit"=>"Acceder", "unique_token"=>"[FILTERED]"}
+  [1m[36mLink Load (0.2ms)[0m  [1m[34mSELECT "links".* FROM "links" WHERE "links"."unique_token" = ? LIMIT ?[0m  [["unique_token", "[FILTERED]"], ["LIMIT", 1]]
+  ↳ app/models/link.rb:18:in `find_by_unique_token'
+Redirected to https://www.twitch.tv/mafiosin410
+Completed 302 Found in 5ms (ActiveRecord: 0.2ms | Allocations: 711)
+
+
+Started POST "/l/285fb4" for 127.0.0.1 at 2023-12-04 00:45:51 -0300
+Processing by LinksController#validate_password as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]", "password"=>"[FILTERED]", "commit"=>"Acceder", "unique_token"=>"[FILTERED]"}
+  [1m[36mLink Load (0.3ms)[0m  [1m[34mSELECT "links".* FROM "links" WHERE "links"."unique_token" = ? LIMIT ?[0m  [["unique_token", "[FILTERED]"], ["LIMIT", 1]]
+  ↳ app/models/link.rb:18:in `find_by_unique_token'
+Redirected to http://127.0.0.1:3000/
+Redirected to 
+Completed 500 Internal Server Error in 25ms (ActiveRecord: 3.1ms | Allocations: 6173)
+
+
+  
+AbstractController::DoubleRenderError (Render and/or redirect were called multiple times in this action. Please note that you may only call render OR redirect, and at most once per action. Also note that neither redirect nor render terminate execution of the action, so if you want to exit an action after redirecting, you need to do something like "redirect_to(...); return".):
+  
+app/controllers/links_controller.rb:46:in `validate_password'
+Started GET "/l/285fb4" for 127.0.0.1 at 2023-12-04 00:46:19 -0300
+Processing by LinksController#redirect_to_url as HTML
+  Parameters: {"unique_token"=>"[FILTERED]"}
+  [1m[36mLink Load (0.3ms)[0m  [1m[34mSELECT "links".* FROM "links" WHERE "links"."unique_token" = ? LIMIT ?[0m  [["unique_token", "[FILTERED]"], ["LIMIT", 1]]
+  ↳ app/models/link.rb:18:in `find_by_unique_token'
+  Rendering layout layouts/application.html.erb
+  Rendering links/private.html.erb within layouts/application
+  Rendered links/private.html.erb within layouts/application (Duration: 8.5ms | Allocations: 1610)
+  Rendered layout layouts/application.html.erb (Duration: 41.1ms | Allocations: 15044)
+Completed 200 OK in 150ms (Views: 54.0ms | ActiveRecord: 11.7ms | Allocations: 21146)
+
+
+Started POST "/l/285fb4" for 127.0.0.1 at 2023-12-04 00:46:24 -0300
+Processing by LinksController#validate_password as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]", "password"=>"[FILTERED]", "commit"=>"Acceder", "unique_token"=>"[FILTERED]"}
+  [1m[36mLink Load (0.1ms)[0m  [1m[34mSELECT "links".* FROM "links" WHERE "links"."unique_token" = ? LIMIT ?[0m  [["unique_token", "[FILTERED]"], ["LIMIT", 1]]
+  ↳ app/models/link.rb:18:in `find_by_unique_token'
+Redirected to http://127.0.0.1:3000/
+Completed 302 Found in 8ms (ActiveRecord: 0.1ms | Allocations: 786)
+
+
+Started GET "/" for 127.0.0.1 at 2023-12-04 00:46:25 -0300
+Processing by DashboardController#index as TURBO_STREAM
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  Rendering dashboard/index.html.erb within layouts/application
+  Rendered dashboard/index.html.erb within layouts/application (Duration: 0.7ms | Allocations: 92)
+  Rendered layout layouts/application.html.erb (Duration: 6.7ms | Allocations: 2090)
+Completed 200 OK in 64ms (Views: 8.4ms | ActiveRecord: 1.0ms | Allocations: 14450)
+
+
