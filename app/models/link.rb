@@ -3,7 +3,7 @@ class Link < ApplicationRecord
     validates :url, presence: true
   
     before_create :generate_unique_token
-  
+
     def generate_unique_token
       new_token = SecureRandom.hex(3) 
 
@@ -17,22 +17,24 @@ class Link < ApplicationRecord
     def self.find_by_unique_token(token)
       find_by(unique_token: token)
     end
-    
+
     def access_link()
       case link_type
       when 'regular'
         true
       when 'temporal'
         expires_at > Time.now
-      when 'private'
-        password == link_password
       when 'ephemeral'
         access_count == 0
       else
         false
       end
     end
-  
+    
+    def private?
+      link_type == 'private'
+    end
+
     def visit_link(password = nil)
       return unless access_link(password)
   

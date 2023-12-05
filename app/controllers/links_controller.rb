@@ -1,6 +1,9 @@
 class LinksController < ApplicationController
-  before_action :set_link, only: %i[ show edit update destroy ]
+  
+  before_action :authenticate_user!, except: [:show, :redirect_to_url, :validate_password]
 
+  before_action :set_link, only: %i[ show edit update destroy ]
+  
   # GET /links or /links.json
   def index
     @links = Link.all
@@ -23,18 +26,17 @@ class LinksController < ApplicationController
     link = Link.find_by_unique_token(params[:unique_token])
 
     if !link 
-      redirect_to root_path, alert: "El enlace no existe"
-    end
-
-    if link.link_type == "private"
+      flash[:alert] = "El enlace no existe"
+      redirect_to root_path
+    elsif link.private?
       render "private"
       return
-    end
-
-    if link.access_link()
+    elsif link.access_link()
       redirect_to link.url, allow_other_host: true
+    else 
+      flash[:alert] = "El enlace no existe"
+      redirect_to root_path
     end
-    redirect_to root_path, alert: "El enlace no existe"
   end
 
   def validate_password
@@ -42,12 +44,14 @@ class LinksController < ApplicationController
 
     if link
       if link.link_type == 'private' && params[:password] == link.link_password
-        redirect_to link.url, allow_other_host: true
+        redirect_to link.url, allow_other_host:true
       else
-        redirect_to root_path, alert: "Contraseña incorrecta"
+        flash[:alert] = 'la contraseña es incorrecta'
+        redirect_to "/private"
       end
     else
-      redirect_to root_path, alert: "El enlace no existe"
+      flash[:alert] = "El enlace no existe"
+      redirect_to root_path 
     end
   end
 
