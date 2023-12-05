@@ -47,6 +47,9 @@ gem "bootsnap", require: false
 # Use for authentication handling
 gem "devise"
 
+# JavaScript library that simplifies the creation of dynamic websites.
+gem 'jquery-rails'
+
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
   gem "debug", platforms: %i[ mri windows ]

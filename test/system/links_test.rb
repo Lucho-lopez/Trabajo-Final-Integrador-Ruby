@@ -14,7 +14,6 @@ class LinksTest < ApplicationSystemTestCase
     visit links_url
     click_on "New link"
 
-    fill_in "Access count", with: @link.access_count
     fill_in "Expires at", with: @link.expires_at
     fill_in "Link password", with: @link.link_password
     fill_in "Link type", with: @link.link_type
@@ -30,7 +29,6 @@ class LinksTest < ApplicationSystemTestCase
     visit link_url(@link)
     click_on "Edit this link", match: :first
 
-    fill_in "Access count", with: @link.access_count
     fill_in "Expires at", with: @link.expires_at
     fill_in "Link password", with: @link.link_password
     fill_in "Link type", with: @link.link_type

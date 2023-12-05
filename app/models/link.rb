@@ -1,5 +1,7 @@
 # app/models/link.rb
 class Link < ApplicationRecord
+    
+    belongs_to :user
     validates :url, presence: true
   
     before_create :generate_unique_token
@@ -34,18 +36,6 @@ class Link < ApplicationRecord
     def private?
       link_type == 'private'
     end
-
-    def visit_link(password = nil)
-      return unless access_link(password)
   
-      update_access_count
-      true
-    end
-  
-    private
-  
-    def update_access_count
-      update(access_count: access_count + 1)
-    end
   end
   

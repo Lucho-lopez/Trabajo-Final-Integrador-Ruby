@@ -17,7 +17,7 @@ class LinksControllerTest < ActionDispatch::IntegrationTest
 
   test "should create link" do
     assert_difference("Link.count") do
-      post links_url, params: { link: { access_count: @link.access_count, expires_at: @link.expires_at, link_password: @link.link_password, link_type: @link.link_type, unique_token: @link.unique_token, url: @link.url } }
+      post links_url, params: { link: { expires_at: @link.expires_at, link_password: @link.link_password, link_type: @link.link_type, unique_token: @link.unique_token, url: @link.url } }
     end
 
     assert_redirected_to link_url(Link.last)
@@ -34,7 +34,7 @@ class LinksControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should update link" do
-    patch link_url(@link), params: { link: { access_count: @link.access_count, expires_at: @link.expires_at, link_password: @link.link_password, link_type: @link.link_type, unique_token: @link.unique_token, url: @link.url } }
+    patch link_url(@link), params: { link: { expires_at: @link.expires_at, link_password: @link.link_password, link_type: @link.link_type, unique_token: @link.unique_token, url: @link.url } }
     assert_redirected_to link_url(@link)
   end
 

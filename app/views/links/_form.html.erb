@@ -1,15 +1,4 @@
 <%= form_with(model: link) do |form| %>
-  <% if link.errors.any? %>
-    <div style="color: red">
-      <h2><%= pluralize(link.errors.count, "error") %> prohibited this link from being saved:</h2>
-
-      <ul>
-        <% link.errors.each do |error| %>
-          <li><%= error.full_message %></li>
-        <% end %>
-      </ul>
-    </div>
-  <% end %>
 
   <div>
     <%= form.label :url, style: "display: block" %>
@@ -18,30 +7,41 @@
 
   <div>
     <%= form.label :link_type, style: "display: block" %>
-    <%= form.text_field :link_type %>
+    <%= form.select :link_type, options_for_select(['regular', 'private', 'ephimeral']), {}, class: 'link-type-select' %>
   </div>
-
-  <div>
+  
+  <div id="expires_at_field" style="display: none;">
     <%= form.label :expires_at, style: "display: block" %>
     <%= form.datetime_field :expires_at %>
   </div>
 
-  <div>
+  <div id="link_password_field" style="display: none;">
     <%= form.label :link_password, style: "display: block" %>
     <%= form.text_field :link_password %>
   </div>
 
   <div>
-    <%= form.label :unique_token, style: "display: block" %>
-    <%= form.text_field :unique_token %>
-  </div>
-
-  <div>
-    <%= form.label :access_count, style: "display: block" %>
-    <%= form.number_field :access_count %>
-  </div>
-
-  <div>
     <%= form.submit %>
   </div>
+
+
+<script>
+  $(document).ready(function() {
+    $('.link-type-select').change(function() {
+      var selectedType = $(this).val();
+      
+      if (selectedType === 'regular') {
+        $('#expires_at_field').hide();
+        $('#link_password_field').hide();
+      } else if (selectedType === 'private') {
+        $('#expires_at_field').hide();
+        $('#link_password_field').show();
+      } else if (selectedType === 'ephimeral') {
+        $('#expires_at_field').show();
+        $('#link_password_field').hide();
+      }
+    });
+  });
+</script>
+
 <% end %>

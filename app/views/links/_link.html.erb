@@ -9,24 +9,21 @@
     <%= link.link_type %>
   </p>
 
-  <p>
-    <strong>Expires at:</strong>
-    <%= link.expires_at %>
-  </p>
+  <% if link.link_type == 'private' %>
+    <p>
+      <strong>Link password:</strong>
+      <%= link.link_password %>
+    </p>
+  <% elsif link.link_type == 'ephimeral' %>
+    <p>
+      <strong>Expires at:</strong>
+      <%= link.expires_at %>
+    </p>
+  <% end %>
 
   <p>
-    <strong>Link password:</strong>
-    <%= link.link_password %>
+    <strong>Link acortado:</strong>
+    <%= request.protocol + request.host_with_port + "/l/" +link.unique_token %>
   </p>
-
-  <p>
-    <strong>Unique token:</strong>
-    <%= link.unique_token %>
-  </p>
-
-  <p>
-    <strong>Access count:</strong>
-    <%= link.access_count %>
-  </p>
-
 </div>
+

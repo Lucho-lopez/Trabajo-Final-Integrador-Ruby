@@ -6,8 +6,8 @@ class CreateLinks < ActiveRecord::Migration[7.1]
       t.datetime :expires_at
       t.string :link_password
       t.string :unique_token
-      t.integer :access_count
 
+      t.references :user, foreign_key: true
       t.timestamps
     end
   end
