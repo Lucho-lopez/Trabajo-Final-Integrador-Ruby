@@ -1,0 +1,29 @@
+<div id="<%= dom_id link %>">
+  <p>
+    <strong>Url:</strong>
+    <%= link.url %>
+  </p>
+
+  <p>
+    <strong>Link type:</strong>
+    <%= link.link_type %>
+  </p>
+
+  <% if link.link_type == 'private' %>
+    <p>
+      <strong>Link password:</strong>
+      <%= link.link_password %>
+    </p>
+  <% elsif link.link_type == 'ephemeral' %>
+    <p>
+      <strong>Expires at:</strong>
+      <%= link.expires_at %>
+    </p>
+  <% end %>
+
+  <p>
+    <strong>Link acortado:</strong>
+    <%= request.protocol + request.host_with_port + "/l/" +link.unique_token %>
+  </p>
+</div>
+

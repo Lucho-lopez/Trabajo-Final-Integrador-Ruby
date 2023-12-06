@@ -11,7 +11,14 @@
   </head>
 
   <body>
+    <p class="notice"><%= notice %></p>
+    <p class="alert"><%= alert %></p>
+
     <%= yield %>
+    
+      <a href="<%= links_path %>">
+      <span>Links</span></a>
+    
     <%= link_to "Cerrar Sesion", destroy_user_session_path, data: {turbo_method: :delete} %>
   </body>
 </html>

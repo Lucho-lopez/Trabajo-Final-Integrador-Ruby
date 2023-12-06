@@ -1,0 +1,23 @@
+<h1>Lista de Links</h1>
+  <table border="1">
+    <thead>
+      <tr>
+        <th>Url</th>
+        <th>Link type</th>
+        <th>Link acortado</th>
+        <th> acciones</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @links.each do |link| %>
+        <tr>
+          <td> <%= link.url %> </td>
+          <td> <%= link.link_type %> </td>
+          <td> <%= request.protocol + request.host_with_port + "/l/" +link.unique_token %></td>
+          <td> <%= link_to "Detalles", link_path(link) %> </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+<a href="<%= new_link_path %>">
+<%= link_to "Nuevo link", new_link_path %>
