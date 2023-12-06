@@ -7,15 +7,15 @@
 
   <div>
     <%= form.label :link_type, style: "display: block" %>
-    <%= form.select :link_type, options_for_select(['regular', 'private', 'ephimeral']), {}, class: 'link-type-select' %>
+    <%= form.select :link_type, options_for_select(['regular', 'private', 'ephemeral','temporal'], selected: (link.link_type == 'private' ? 'private' : link.link_type)), {}, class: 'link-type-select' %>
   </div>
   
-  <div id="expires_at_field" style="display: none;">
+  <div id="expires_at_field" style="<%= link.link_type == 'temporal' ? '' : 'display: none;' %>">
     <%= form.label :expires_at, style: "display: block" %>
     <%= form.datetime_field :expires_at %>
   </div>
 
-  <div id="link_password_field" style="display: none;">
+  <div id="link_password_field" style="<%= link.link_type == 'private' ? '' : 'display: none;' %>">
     <%= form.label :link_password, style: "display: block" %>
     <%= form.text_field :link_password %>
   </div>
@@ -24,24 +24,36 @@
     <%= form.submit %>
   </div>
 
+  <script>
+    $(document).ready(function() {
+      $('.link-type-select').change(function() {
+        var selectedType = $(this).val();
+        
+        if (selectedType === 'regular' || selectedType === 'ephemeral') {
+          $('#expires_at_field').hide();
+          $('#link_password_field').hide();
+        } else if (selectedType === 'private') {
+          $('#expires_at_field').hide();
+          $('#link_password_field').show();
+        } else if (selectedType === 'temporal') {
+          $('#expires_at_field').show();
+          $('#link_password_field').hide();
+        }
+      });
 
-<script>
-  $(document).ready(function() {
-    $('.link-type-select').change(function() {
-      var selectedType = $(this).val();
-      
-      if (selectedType === 'regular') {
+      // Show/hide fields based on the default selected value
+      var defaultSelectedType = $('.link-type-select').val();
+      if (defaultSelectedType === 'regular'|| defaultSelectedType === 'ephemeral') {
         $('#expires_at_field').hide();
         $('#link_password_field').hide();
-      } else if (selectedType === 'private') {
+      } else if (defaultSelectedType === 'private') {
         $('#expires_at_field').hide();
         $('#link_password_field').show();
-      } else if (selectedType === 'ephimeral') {
+      } else if (defaultSelectedType === 'temporal') {
         $('#expires_at_field').show();
         $('#link_password_field').hide();
       }
     });
-  });
-</script>
+  </script>
 
 <% end %>

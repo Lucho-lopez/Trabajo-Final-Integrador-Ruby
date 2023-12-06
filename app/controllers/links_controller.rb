@@ -44,7 +44,7 @@ class LinksController < ApplicationController
 
     if link
       if link.link_type == 'private' && params[:password] == link.link_password
-        redirect_to link.url, allow_other_host:true
+        redirect_to link.url, allow_other_host: true
       else
         flash[:alert] = 'la contraseña es incorrecta'
         redirect_to "/private"

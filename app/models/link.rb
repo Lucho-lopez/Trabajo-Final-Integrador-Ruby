@@ -27,7 +27,8 @@ class Link < ApplicationRecord
       when 'temporal'
         expires_at > Time.now
       when 'ephemeral'
-        access_count == 0
+        #ver cuantos visitantes tiene
+        true
       else
         false
       end
