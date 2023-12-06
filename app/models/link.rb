@@ -2,6 +2,7 @@
 class Link < ApplicationRecord
     
     belongs_to :user
+    has_many :visit_infos, dependent: :destroy
     validates :url, presence: true
   
     before_create :generate_unique_token
@@ -37,6 +38,10 @@ class Link < ApplicationRecord
     def private?
       link_type == 'private'
     end
-  
+    
+    def create_visit_info(ip_address, visited_at)
+      visit_infos.create(ip_address: ip_address, visited_at: visited_at)
+    end
+    
   end
   

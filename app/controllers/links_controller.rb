@@ -29,9 +29,11 @@ class LinksController < ApplicationController
       flash[:alert] = "El enlace no existe"
       redirect_to root_path
     elsif link.private?
+      link.create_visit_info(request.remote_ip, Time.current)
       render "private"
       return
     elsif link.access_link()
+      link.create_visit_info(request.remote_ip, Time.current)
       redirect_to link.url, allow_other_host: true
     else 
       flash[:alert] = "El enlace no existe"
