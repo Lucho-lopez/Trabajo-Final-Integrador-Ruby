@@ -28,8 +28,7 @@ class Link < ApplicationRecord
       when 'temporal'
         expires_at > Time.now
       when 'ephemeral'
-        #ver cuantos visitantes tiene
-        true
+        !visit_infos.present?
       else
         false
       end
