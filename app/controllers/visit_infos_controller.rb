@@ -5,9 +5,8 @@ class VisitInfosController < ApplicationController
   before_action :authenticate_user!
   # GET /visit_infos or /visit_infos.json
   def index
-    @visit_infos = VisitInfo.all
-  end
 
+  end
   # GET /visit_infos/1 or /visit_infos/1.json
   def show
   end
@@ -20,11 +19,11 @@ class VisitInfosController < ApplicationController
   # GET /visit_infos/1/edit
   def edit
   end
-
+  
   # POST /visit_infos or /visit_infos.json
   def create
     @link = Link.find(params[:link_id])
-    @visit_info = @link.visit_infos.build(visit_info_params)
+    @visit_info = @link.create_visit_info(visit_info_params[:ip_address], visit_info_params[:visited_at])
 
     respond_to do |format|
       if @visit_info.save

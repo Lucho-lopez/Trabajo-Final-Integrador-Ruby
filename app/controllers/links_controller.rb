@@ -11,6 +11,25 @@ class LinksController < ApplicationController
 
   # GET /links/1 or /links/1.json
   def show
+    @link = Link.find(params[:id])
+    @visit_infos = @link.visit_infos
+
+    if params[:ip_address].present?
+      @visit_infos = @visit_infos.where(ip_address: params[:ip_address])
+    end
+
+    if params[:start_date].present? && params[:end_date].present?
+      start_date = Date.parse(params[:start_date])
+      end_date = Date.parse(params[:end_date])
+      @visit_infos = @visit_infos.where(visited_at: start_date.beginning_of_day..end_date.end_of_day)
+      @days = (end_date - start_date).to_i
+      @total_visits = @visit_infos.where(visited_at: start_date.beginning_of_day..end_date.end_of_day).count
+    else
+      @days = (Time.zone.now.to_date - @link.created_at.to_date).to_i
+      @total_visits = @visit_infos.count
+    end
+    @average_visits_per_day = @days.zero? ? @total_visits : (@total_visits.to_f / @days)
+    render "show"
   end
 
   # GET /links/new
@@ -29,7 +48,6 @@ class LinksController < ApplicationController
       flash[:alert] = "El enlace no existe"
       redirect_to root_path
     elsif link.private?
-      link.create_visit_info(request.remote_ip, Time.current)
       render "private"
       return
     elsif link.access_link()
@@ -46,6 +64,7 @@ class LinksController < ApplicationController
 
     if link
       if link.link_type == 'private' && params[:password] == link.link_password
+        link.create_visit_info(request.remote_ip, Time.current)
         redirect_to link.url, allow_other_host: true
       else
         flash[:alert] = 'la contraseña es incorrecta'

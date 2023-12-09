@@ -38,7 +38,7 @@ class Link < ApplicationRecord
     def private?
       link_type == 'private'
     end
-    
+
     def create_visit_info(ip_address, visited_at)
       visit_infos.create(ip_address: ip_address, visited_at: visited_at)
     end
