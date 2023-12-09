@@ -5,7 +5,9 @@
         <th>Url</th>
         <th>Link type</th>
         <th>Link acortado</th>
-        <th> acciones</th>
+        <th>Acciones</th>
+        <th>Editar</th>
+        <th>Eliminar</th>
       </tr>
     </thead>
     <tbody>
@@ -15,6 +17,8 @@
           <td> <%= link.link_type %> </td>
           <td> <%= request.protocol + request.host_with_port + "/l/" +link.unique_token %></td>
           <td> <%= link_to "Detalles", link_path(link) %> </td>
+          <td> <%= link_to "Editar", edit_link_path(link) %> </td> 
+          <td> <%= link_to "Eliminar", link, method: :delete %> </td> 
         </tr>
       <% end %>
     </tbody>

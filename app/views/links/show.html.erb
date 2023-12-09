@@ -1,10 +1,47 @@
 <p style="color: green"><%= notice %></p>
+<h2>Información de Visitas</h2>
 
-<%= render @link %>
+<%= form_with(url: request.path, method: :get) do |form| %>
+  <%= form.text_field :ip_address, value: params[:ip_address], placeholder: "Buscar por IP" %>
 
-<div>
-  <%= link_to "Edit this link", edit_link_path(@link) %> |
-  <%= link_to "Back to links", links_path %>
+  <%= form.label :start_date, "Inicio" %>
+  <%= form.date_field :start_date, value: params[:start_date] %>
 
-  <%= button_to "Destroy this link", @link, method: :delete %>
-</div>
+  <%= form.label :end_date, "Fin" %>
+  <%= form.date_field :end_date, value: params[:end_date] %>
+
+  <%= form.submit "Buscar" %>
+<% end %>
+<% if @visit_infos.present? %>
+  <ul>
+    <% @visit_infos.each do |visit_info| %>
+      <li>
+        <strong>IP Address:</strong> <%= visit_info.ip_address %>
+        <br>
+        <strong>Visited At:</strong> <%= visit_info.visited_at %>
+      </li>
+    <% end %>
+  </ul>
+<% else %>
+  <p>No hay datos de visitas por día para este enlace.</p>
+<% end %>
+
+<h2>Cantidad de Visitas por Día</h2>
+
+<p><strong>Cantidad de dias:</strong> <%= @days %></p>
+
+<p><strong> Cantidad de visitas:</strong>
+  <% if @total_visits %>
+    <%= @total_visits %> visitas
+  <% else %>
+    No hay visitas registradas aún
+  <% end %>
+</p>
+
+<p><strong>Promedio de visitas por día:</strong>
+  <% if @average_visits_per_day %>
+    <%= @average_visits_per_day.round(2) %> visitas
+  <% else %>
+    No hay visitas registradas aún
+  <% end %>
+</p>
