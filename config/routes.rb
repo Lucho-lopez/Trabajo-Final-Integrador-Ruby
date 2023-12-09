@@ -12,6 +12,9 @@ Rails.application.routes.draw do
   get 'l/:unique_token', to: 'links#redirect_to_url'
 
   post 'l/:unique_token', to: 'links#validate_password', as: :validate_password_link
+
+  delete 'delete_account', to: 'users#delete_account', as: 'delete_account'
+  #devise_for :users, controllers: { registrations: 'users/registrations' }
   # Defines the root path route ("/")
   root "dashboard#index"
 end
