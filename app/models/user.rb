@@ -5,11 +5,20 @@ class User < ApplicationRecord
            :recoverable, :rememberable, :validatable
 
     validates :username, presence: true, uniqueness: { case_sensitive: false }
-    validates_format_of :username, with: /\A[a-zA-Z0-9_\.]{5,}\z/, multiline: true, message: 'debe tener al menos 5 caracteres'
+    validates_format_of :username, with: /\A[a-zA-Z0-9_\.]{5,}\z/, message: 'debe tener al menos 5 caracteres y no tener caracteres especiales'
 
     
     has_many :links, dependent: :destroy
-
+    HUMANIZED_ATTRIBUTES = {
+      email: "Correo electrónico",
+      password_confirmation: "Confirmación de contraseña",
+      password: "Contraseña",
+      username: "Nombre de usuario"
+    }
+    def self.human_attribute_name(attr, options = {})
+    HUMANIZED_ATTRIBUTES[attr.to_sym] || super
+    end
+    
     attr_writer :login
     
     def login

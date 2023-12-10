@@ -1,6 +1,6 @@
 <div id="<%= dom_id link %>">
   <p>
-    <strong>Link Name:</strong>
+    <strong>Nombre de link:</strong>
     <%= link.link_name %>
   </p>
   <p>
@@ -9,18 +9,18 @@
   </p>
 
   <p>
-    <strong>Link type:</strong>
+    <strong>Tipo de link:</strong>
     <%= link.link_type %>
   </p>
 
   <% if link.link_type == 'private' %>
     <p>
-      <strong>Link password:</strong>
+      <strong>Contraseña de link:</strong>
       <%= link.link_password %>
     </p>
   <% elsif link.link_type == 'ephemeral' %>
     <p>
-      <strong>Expires at:</strong>
+      <strong>Expira:</strong>
       <%= link.expires_at %>
     </p>
   <% end %>

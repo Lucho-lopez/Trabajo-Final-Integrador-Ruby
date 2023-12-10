@@ -7,6 +7,16 @@ class Link < ApplicationRecord
     validates :link_name, presence: true
     before_create :generate_unique_token
 
+    HUMANIZED_ATTRIBUTES = {
+      link_name: "Nombre del link",
+      link_type: "Tipo de link",
+      expires_at: "Expira",
+      link_password: "Contraseña",
+      unique_token: "Token único"
+    }
+    def self.human_attribute_name(attr, options = {})
+    HUMANIZED_ATTRIBUTES[attr.to_sym] || super
+    end
     def generate_unique_token
       new_token = SecureRandom.hex(3) 
 
