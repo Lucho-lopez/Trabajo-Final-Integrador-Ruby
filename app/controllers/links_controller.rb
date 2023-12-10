@@ -1,6 +1,6 @@
 class LinksController < ApplicationController
   
-  before_action :authenticate_user!, except: [:show, :redirect_to_url, :validate_password]
+  before_action :authenticate_user!, except: [:redirect_to_url, :validate_password]
 
   before_action :set_link, only: %i[ show edit update destroy ]
 
@@ -48,7 +48,7 @@ class LinksController < ApplicationController
       flash[:alert] = "El enlace no existe"
       redirect_to root_path
     elsif link.private?
-      render "private"
+      render "private", layout: false
       return
     elsif link.access_link()
       link.create_visit_info(request.remote_ip, Time.current)
