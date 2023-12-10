@@ -26,6 +26,8 @@
   <p>No hay datos de visitas por día para este enlace.</p>
 <% end %>
 
+<%== pagy_nav(@pagy) if @pagy.pages > 1 %>
+
 <h2>Cantidad de Visitas por Día</h2>
 
 <p><strong>Cantidad de dias:</strong> <%= @days %></p>
