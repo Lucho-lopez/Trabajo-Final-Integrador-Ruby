@@ -1,12 +1,14 @@
 class LinksController < ApplicationController
   
+  
   before_action :authenticate_user!, except: [:redirect_to_url, :validate_password]
 
   before_action :set_link, only: %i[ show edit update destroy ]
 
   # GET /links or /links.json
   def index
-    @links = current_user.links
+    @pagy, @links = pagy(Link.all.where(user_id: current_user), items: 5)
+
   end
 
   # GET /links/1 or /links/1.json
