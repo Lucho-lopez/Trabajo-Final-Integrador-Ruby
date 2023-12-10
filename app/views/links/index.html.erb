@@ -6,20 +6,19 @@
         <th>Url</th>
         <th>Tipo de link</th>
         <th>Link acortado</th>
-        <th>Acciones</th>
-        <th>Editar</th>
-        <th>Eliminar</th>
+        <th colspan="3">Acciones</th>
       </tr>
     </thead>
     <tbody>
       <% @links.each do |link| %>
         <tr>
           <td> <%= link.link_name %> </td>
-          <td> <%= link.url %> </td>
+          <td> <%= link_to link.url, link.url %> </td>
           <td> <%= t("link_types.#{link.link_type}") %> </td>
-
-          <td> <%= request.protocol + request.host_with_port + "/l/" +link.unique_token %></td>
-          <td> <%= link_to "Detalles", link_path(link) %> </td>
+          <td id="link_<%= link.id %>">
+            <%= request.protocol + request.host_with_port + "/l/" +link.unique_token %>
+          </td>
+          <td> <%= link_to "Visitas", link_path(link) %> </td>
           <td> <%= link_to "Editar", edit_link_path(link) %> </td> 
           <td> <%= link_to "Eliminar", link, method: :delete %> </td> 
         </tr>
@@ -31,3 +30,21 @@
 <a href="<%= new_link_path %>">
 <%= link_to "Nuevo link", new_link_path %>
 
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    <% @links.each do |link| %>
+      document.getElementById('link_<%= link.id %>').addEventListener('click', function() {
+        var texto = this.innerText;
+        var elementoTemporal = document.createElement('textarea');
+
+        elementoTemporal.value = texto;
+        document.body.appendChild(elementoTemporal);
+        elementoTemporal.select();
+        document.execCommand('copy');
+        document.body.removeChild(elementoTemporal);
+
+        alert('Texto copiado al portapapeles: ' + texto);
+      });
+    <% end %>
+  });
+</script>

@@ -4,7 +4,6 @@ class Link < ApplicationRecord
     belongs_to :user
     has_many :visit_infos, dependent: :destroy
     validates :url, presence: true
-    validates :link_name, presence: true
     validates :link_password, presence: true, if: -> { link_type == 'private' }
     validates :expires_at, presence: true, if: -> { link_type == 'temporal' }
     before_create :generate_unique_token
