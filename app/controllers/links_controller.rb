@@ -114,7 +114,7 @@ class LinksController < ApplicationController
     @link.destroy!
 
     respond_to do |format|
-      format.html { redirect_to links_url, notice: "El link fue destruido correctamente." }
+      format.html { redirect_to links_url, notice: "El link fue eliminado correctamente." }
       format.json { heaad :no_content }
     end
   end
