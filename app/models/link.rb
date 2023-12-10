@@ -5,6 +5,8 @@ class Link < ApplicationRecord
     has_many :visit_infos, dependent: :destroy
     validates :url, presence: true
     validates :link_name, presence: true
+    validates :link_password, presence: true, if: -> { link_type == 'private' }
+    validates :expires_at, presence: true, if: -> { link_type == 'temporal' }
     before_create :generate_unique_token
 
     HUMANIZED_ATTRIBUTES = {
@@ -17,6 +19,7 @@ class Link < ApplicationRecord
     def self.human_attribute_name(attr, options = {})
     HUMANIZED_ATTRIBUTES[attr.to_sym] || super
     end
+
     def generate_unique_token
       new_token = SecureRandom.hex(3) 
 
