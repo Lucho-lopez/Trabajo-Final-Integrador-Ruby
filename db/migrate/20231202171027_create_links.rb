@@ -1,6 +1,7 @@
 class CreateLinks < ActiveRecord::Migration[7.1]
   def change
     create_table :links do |t|
+      t.string :link_name
       t.string :url
       t.string :link_type
       t.datetime :expires_at

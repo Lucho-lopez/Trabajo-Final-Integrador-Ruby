@@ -4,7 +4,7 @@ class Link < ApplicationRecord
     belongs_to :user
     has_many :visit_infos, dependent: :destroy
     validates :url, presence: true
-  
+    validates :link_name, presence: true
     before_create :generate_unique_token
 
     def generate_unique_token
@@ -28,8 +28,7 @@ class Link < ApplicationRecord
       when 'temporal'
         expires_at > Time.now
       when 'ephemeral'
-        #ver cuantos visitantes tiene
-        true
+        !visit_infos.present?
       else
         false
       end
