@@ -27,6 +27,7 @@
     </tbody>
   </table>
   
+<%== pagy_nav(@pagy) if @pagy.pages > 1 %>
 <a href="<%= new_link_path %>">
 <%= link_to "Nuevo link", new_link_path %>
 

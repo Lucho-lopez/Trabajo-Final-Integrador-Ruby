@@ -1,12 +1,14 @@
 class LinksController < ApplicationController
   
+  
   before_action :authenticate_user!, except: [:redirect_to_url, :validate_password]
 
   before_action :set_link, only: %i[ show edit update destroy ]
 
   # GET /links or /links.json
   def index
-    @links = current_user.links
+    @pagy, @links = pagy(Link.all.where(user_id: current_user).order(created_at: :desc), items: 5)
+
   end
 
   # GET /links/1 or /links/1.json
@@ -28,6 +30,7 @@ class LinksController < ApplicationController
       @days = (Time.zone.now.to_date - @link.created_at.to_date).to_i
       @total_visits = @visit_infos.count
     end
+    @pagy, @visit_infos = pagy(@visit_infos.order(visited_at: :desc), items: 5)
     @average_visits_per_day = @days.zero? ? @total_visits : (@total_visits.to_f / @days)
     render "show"
   end
