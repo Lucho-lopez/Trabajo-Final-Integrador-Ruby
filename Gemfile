@@ -45,13 +45,16 @@ gem "bootsnap", require: false
 # gem "image_processing", "~> 1.2"
 
 # Use for authentication handling
-gem "devise"
+gem "devise", '~> 4.9', '>= 4.9.3'
 
 # JavaScript library that simplifies the creation of dynamic websites.
-gem 'jquery-rails'
+gem 'jquery-rails', '~> 4.6'
 
 # Use for spanish translation
-gem 'rails-i18n'
+gem 'rails-i18n', '~> 7.0', '>= 7.0.8'
+
+# Use to encrypt passwords
+gem 'bcrypt', '~> 3.1', '>= 3.1.20'
 
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem

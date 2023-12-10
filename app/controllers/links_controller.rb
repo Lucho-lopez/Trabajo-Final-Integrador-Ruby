@@ -63,7 +63,7 @@ class LinksController < ApplicationController
     link = Link.find_by_unique_token(params[:unique_token])
 
     if link
-      if link.link_type == 'private' && params[:password] == link.link_password
+      if link.link_type == 'private' && BCrypt::Password.new(link.link_password) == params[:password]
         link.create_visit_info(request.remote_ip, Time.current)
         redirect_to link.url, allow_other_host: true
       else
@@ -79,6 +79,8 @@ class LinksController < ApplicationController
   # POST /links or /links.json
   def create
     @link = current_user.links.build(link_params)
+    
+    @link.link_password = BCrypt::Password.create(params[:link][:link_password]) if params[:link][:link_password].present?
     
     respond_to do |format|
       if @link.save
