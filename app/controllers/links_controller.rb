@@ -48,8 +48,7 @@ class LinksController < ApplicationController
     link = Link.find_by_unique_token(params[:unique_token])
 
     if !link 
-      flash[:alert] = "El enlace no existe"
-      redirect_to root_path
+      render 'errors/400', status: :bad_request, layout: false
     elsif link.private?
       render "private", layout: false
       return
@@ -57,6 +56,14 @@ class LinksController < ApplicationController
       link.create_visit_info(request.remote_ip, Time.current)
       redirect_to link.url, allow_other_host: true
     else 
+      if link.link_type == "temporal"
+        render 'errors/404', status: :not_found, layout: false
+        return
+      end
+      if link.link_type == "ephemeral"
+        render 'errors/403', status: :forbidden, layout: false
+        return
+      end
       flash[:alert] = "El enlace no existe"
       redirect_to root_path
     end
