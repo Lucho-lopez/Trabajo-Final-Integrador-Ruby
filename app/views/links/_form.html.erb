@@ -1,10 +1,24 @@
 <%= form_with(model: link) do |form| %>
+  <% if link.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(link.errors.count, "error") %> prohibited this link from being saved:</h2>
+      <ul>
+        <% link.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div>
+    <%= form.label :link_name, style: "display: block" %>
+    <%= form.text_field :link_name %>
+  </div>
 
   <div>
     <%= form.label :url, style: "display: block" %>
     <%= form.text_field :url %>
   </div>
-
   <div>
     <%= form.label :link_type, style: "display: block" %>
     <%= form.select :link_type, options_for_select(['regular', 'private', 'ephemeral','temporal'], selected: (link.link_type == 'private' ? 'private' : link.link_type)), {}, class: 'link-type-select' %>

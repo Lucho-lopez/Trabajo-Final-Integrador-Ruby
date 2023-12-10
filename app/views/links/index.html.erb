@@ -2,6 +2,7 @@
   <table border="1">
     <thead>
       <tr>
+        <th>Nombre</th>
         <th>Url</th>
         <th>Link type</th>
         <th>Link acortado</th>
@@ -13,6 +14,7 @@
     <tbody>
       <% @links.each do |link| %>
         <tr>
+          <td> <%= link.link_name %> </td>
           <td> <%= link.url %> </td>
           <td> <%= link.link_type %> </td>
           <td> <%= request.protocol + request.host_with_port + "/l/" +link.unique_token %></td>

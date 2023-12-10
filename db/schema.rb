@@ -12,6 +12,7 @@
 
 ActiveRecord::Schema[7.1].define(version: 2023_12_09_213816) do
   create_table "links", force: :cascade do |t|
+    t.string "link_name"
     t.string "url"
     t.string "link_type"
     t.datetime "expires_at"
