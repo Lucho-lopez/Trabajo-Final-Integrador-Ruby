@@ -4,7 +4,8 @@
   <%= render "devise/shared/error_messages", resource: resource %>
 
   <div class="field">
-    <%= f.label :username, "Nombre de usuario" %><br />
+    <%= f.label :username, "Nombre de usuario" %>
+    <em>(4 caracteres minimos)</em><br />
     <%= f.text_field :username%>
   </div>
   
@@ -30,5 +31,6 @@
     <%= f.submit "Registrarse" %>
   </div>
 <% end %>
-
-<%= render "devise/shared/links" %>
+<%- if controller_name != 'sessions' %>
+  <%= link_to "Iniciar Sesion", new_session_path(resource_name) %><br />
+<% end %>
