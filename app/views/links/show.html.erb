@@ -16,9 +16,9 @@
   <ul>
     <% @visit_infos.each do |visit_info| %>
       <li>
-        <strong>IP Address:</strong> <%= visit_info.ip_address %>
+        <strong>Direccion IP:</strong> <%= visit_info.ip_address %>
         <br>
-        <strong>Visited At:</strong> <%= visit_info.visited_at %>
+        <strong>Fue visitado:</strong> <%= visit_info.visited_at %>
       </li>
     <% end %>
   </ul>
@@ -45,3 +45,6 @@
     No hay visitas registradas aún
   <% end %>
 </p>
+
+<a href="<%= links_path %>">
+  <span>Links</span></a>

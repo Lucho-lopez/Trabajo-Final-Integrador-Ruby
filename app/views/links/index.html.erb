@@ -4,7 +4,7 @@
       <tr>
         <th>Nombre</th>
         <th>Url</th>
-        <th>Link type</th>
+        <th>Tipo de link</th>
         <th>Link acortado</th>
         <th>Acciones</th>
         <th>Editar</th>
@@ -16,7 +16,8 @@
         <tr>
           <td> <%= link.link_name %> </td>
           <td> <%= link.url %> </td>
-          <td> <%= link.link_type %> </td>
+          <td> <%= t("link_types.#{link.link_type}") %> </td>
+
           <td> <%= request.protocol + request.host_with_port + "/l/" +link.unique_token %></td>
           <td> <%= link_to "Detalles", link_path(link) %> </td>
           <td> <%= link_to "Editar", edit_link_path(link) %> </td> 
@@ -25,5 +26,7 @@
       <% end %>
     </tbody>
   </table>
+  
 <a href="<%= new_link_path %>">
 <%= link_to "Nuevo link", new_link_path %>
+

@@ -1,7 +1,7 @@
 <%= form_with(model: link) do |form| %>
   <% if link.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(link.errors.count, "error") %> prohibited this link from being saved:</h2>
+      <h2><%= pluralize(link.errors.count, "error") %> han impedido que este enlace se guarde:</h2>
       <ul>
         <% link.errors.full_messages.each do |msg| %>
           <li><%= msg %></li>
@@ -11,7 +11,7 @@
   <% end %>
 
   <div>
-    <%= form.label :link_name, style: "display: block" %>
+    <%= form.label :link_name, "Nombre del enlace:", style: "display: block" %>
     <%= form.text_field :link_name %>
   </div>
 
@@ -20,17 +20,23 @@
     <%= form.text_field :url %>
   </div>
   <div>
-    <%= form.label :link_type, style: "display: block" %>
-    <%= form.select :link_type, options_for_select(['regular', 'private', 'ephemeral','temporal'], selected: (link.link_type == 'private' ? 'private' : link.link_type)), {}, class: 'link-type-select' %>
+    <%= form.label :link_type, "Tipo de enlace:", style: "display: block" %>
+    <%= form.select :link_type, options_for_select([
+  [I18n.t('link_types.regular'), 'regular'],
+  [I18n.t('link_types.private'), 'private'],
+  [I18n.t('link_types.ephemeral'), 'ephemeral'],
+  [I18n.t('link_types.temporal'), 'temporal']
+], selected: @link.link_type), {}, class: 'link-type-select' %>
+
   </div>
   
   <div id="expires_at_field" style="<%= link.link_type == 'temporal' ? '' : 'display: none;' %>">
-    <%= form.label :expires_at, style: "display: block" %>
+    <%= form.label :expires_at, "Expira:", style: "display: block" %>
     <%= form.datetime_field :expires_at %>
   </div>
 
   <div id="link_password_field" style="<%= link.link_type == 'private' ? '' : 'display: none;' %>">
-    <%= form.label :link_password, style: "display: block" %>
+    <%= form.label :link_password, "Contraseña:", style: "display: block" %>
     <%= form.text_field :link_password %>
   </div>
 
