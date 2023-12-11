@@ -22,20 +22,20 @@
   <div>
     <%= form.label :link_type, "Tipo de enlace:", style: "display: block" %>
     <%= form.select :link_type, options_for_select([
-  [I18n.t('link_types.regular'), 'regular'],
-  [I18n.t('link_types.private'), 'private'],
-  [I18n.t('link_types.ephemeral'), 'ephemeral'],
-  [I18n.t('link_types.temporal'), 'temporal']
+  [I18n.t('link_types.public_link'), 'public_link'],
+  [I18n.t('link_types.private_link'), 'private_link'],
+  [I18n.t('link_types.ephemeral_link'), 'ephemeral_link'],
+  [I18n.t('link_types.temporal_link'), 'temporal_link']
 ], selected: @link.link_type), {}, class: 'link-type-select' %>
 
   </div>
   
-  <div id="expires_at_field" style="<%= link.link_type == 'temporal' ? '' : 'display: none;' %>">
+  <div id="expires_at_field" style="<%= link.temporal_link? ? '' : 'display: none;' %>">
     <%= form.label :expires_at, "Expira:", style: "display: block" %>
     <%= form.datetime_field :expires_at %>
   </div>
 
-  <div id="link_password_field" style="<%= link.link_type == 'private' ? '' : 'display: none;' %>">
+  <div id="link_password_field" style="<%= link.private_link? ? '' : 'display: none;' %>">
     <%= form.label :link_password, "Contraseña:", style: "display: block" %>
     <%= form.password_field :link_password %>
   </div>
@@ -45,35 +45,22 @@
   </div>
 
   <script>
-    $(document).ready(function() {
-      $('.link-type-select').change(function() {
-        var selectedType = $(this).val();
-        
-        if (selectedType === 'regular' || selectedType === 'ephemeral') {
-          $('#expires_at_field').hide();
-          $('#link_password_field').hide();
-        } else if (selectedType === 'private') {
-          $('#expires_at_field').hide();
-          $('#link_password_field').show();
-        } else if (selectedType === 'temporal') {
-          $('#expires_at_field').show();
-          $('#link_password_field').hide();
-        }
-      });
+  $(document).ready(function() {
+    function toggleFields(selectedType) {
+      $('#expires_at_field').toggle(selectedType === 'temporal_link');
+      $('#link_password_field').toggle(selectedType === 'private_link');
+    }
 
-      // Show/hide fields based on the default selected value
-      var defaultSelectedType = $('.link-type-select').val();
-      if (defaultSelectedType === 'regular'|| defaultSelectedType === 'ephemeral') {
-        $('#expires_at_field').hide();
-        $('#link_password_field').hide();
-      } else if (defaultSelectedType === 'private') {
-        $('#expires_at_field').hide();
-        $('#link_password_field').show();
-      } else if (defaultSelectedType === 'temporal') {
-        $('#expires_at_field').show();
-        $('#link_password_field').hide();
-      }
+    $('.link-type-select').change(function() {
+      var selectedType = $(this).val();
+      toggleFields(selectedType);
     });
-  </script>
+
+    // Show/hide fields based on the default selected value
+    var defaultSelectedType = $('.link-type-select').val();
+    toggleFields(defaultSelectedType);
+  });
+</script>
+
 
 <% end %>

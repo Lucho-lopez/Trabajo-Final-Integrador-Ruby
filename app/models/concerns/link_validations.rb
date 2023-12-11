@@ -2,9 +2,9 @@ module LinkValidations
     extend ActiveSupport::Concern
 
     included do
-        validates :url, presence: true, format: { with: URI::DEFAULT_PARSER.make_regexp, message: "es inválido, un ejemplo válido es https://catedras.linti.unlp.edu.ar/" }
-        validates :link_password, presence: true, if: -> { link_type == 'private' }
-        validates :expires_at, presence: true, if: -> { link_type == 'temporal' }
+        validates :url, presence: true, format: { with: URI::DEFAULT_PARSER.make_regexp, message: "es inválido, un ejemplo válido es http://127.0.0.1:3000" }
+        validates :link_password, presence: true, if: :private_link?
+        validates :expires_at, presence: true, if: :temporal_link?
         validate :url_not_same_as_current_domain
     end
 
@@ -25,7 +25,7 @@ module LinkValidations
 
         current_domain = 'chq.to'
 
-        if URI.parse(url).host == current_domain
+        if URI.parse(url).host == current_domain || URI.parse(url).host == "127.0.0.1"
         errors.add(:url, "no puede ser igual al dominio actual")
         end
     end

@@ -13,12 +13,12 @@
     <%= link.link_type %>
   </p>
 
-  <% if link.link_type == 'private' %>
+  <% if link.private_link? %>
     <p>
       <strong>Contraseña de link:</strong>
       <%= link.link_password %>
     </p>
-  <% elsif link.link_type == 'ephemeral' %>
+  <% elsif link.ephemeral_link? %>
     <p>
       <strong>Expira:</strong>
       <%= link.expires_at %>

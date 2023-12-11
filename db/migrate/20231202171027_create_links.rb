@@ -3,7 +3,7 @@ class CreateLinks < ActiveRecord::Migration[7.1]
     create_table :links do |t|
       t.string :link_name
       t.string :url
-      t.string :link_type
+      t.integer :link_type, default: 0
       t.datetime :expires_at
       t.string :link_password
       t.string :unique_token
