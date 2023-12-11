@@ -40,8 +40,8 @@ class LinksController < ApplicationController
 
     respond_to do |format|
       if @link.save
-        format.html { redirect_to link_url(@link), notice: "El link fue creado correctamente." }
-        format.json { render :show, status: :created, location: @link }
+        format.html { redirect_to links_url, notice: "El link fue creado correctamente." }
+        format.json { render :index, status: :created, location: @link }
       else
         format.html { render :new, status: :unprocessable_entity }
         format.json { render json: @link.errors, status: :unprocessable_entity }
@@ -55,8 +55,8 @@ class LinksController < ApplicationController
         if link_params[:link_password].present? && @link.private_link?
           @link.update(link_password: BCrypt::Password.create(link_params[:link_password]))
         end
-        format.html { redirect_to link_url(@link), notice: "El link fue actualizado correctamente." }
-        format.json { render :show, status: :ok, location: @link }
+        format.html { redirect_to links_url, notice: "El link fue actualizado correctamente." }
+        format.json { render :index, status: :ok, location: @link }
       else
         format.html { render :edit, status: :unprocessable_entity }
         format.json { render json: @link.errors, status: :unprocessable_entity }
@@ -69,7 +69,7 @@ class LinksController < ApplicationController
 
     respond_to do |format|
       format.html { redirect_to links_url, notice: "El link fue eliminado correctamente." }
-      format.json { heaad :no_content }
+      format.json { head :no_content }
     end
   end
 
