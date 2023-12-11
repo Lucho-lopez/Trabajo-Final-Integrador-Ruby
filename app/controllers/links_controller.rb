@@ -112,11 +112,11 @@ class LinksController < ApplicationController
         link.create_visit_info(request.remote_ip, Time.current)
         redirect_to link.url, allow_other_host: true
       else 
-        if link.link_type == "temporal_link"
+        if link.temporal_link?
           render 'errors/404', status: :not_found, layout: false
           return
         end
-        if link.link_type == "ephemeral_link"
+        if link.ephemeral_link?
           render 'errors/403', status: :forbidden, layout: false
           return
         end
@@ -129,7 +129,7 @@ class LinksController < ApplicationController
       link = Link.find_by_unique_token(params[:unique_token])
 
       if link
-        if link.link_type == 'private_link' && BCrypt::Password.new(link.link_password) == params[:password]
+        if link.private_link? && BCrypt::Password.new(link.link_password) == params[:password]
           link.create_visit_info(request.remote_ip, Time.current)
           redirect_to link.url, allow_other_host: true
         else
