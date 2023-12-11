@@ -37,7 +37,7 @@
 
   <div id="link_password_field" style="<%= link.link_type == 'private' ? '' : 'display: none;' %>">
     <%= form.label :link_password, "Contraseña:", style: "display: block" %>
-    <%= form.text_field :link_password %>
+    <%= form.password_field :link_password %>
   </div>
 
   <div>
