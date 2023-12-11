@@ -1,36 +1,110 @@
-<h2>Registrarse</h2>
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 20px;
+      background-color: #f5f5f5;
+      color: #333;
+    }
+    h2 {
+      font-size: 24px;
+      margin-bottom: 20px;
+    }
+    form {
+      background-color: #fff;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+    .field {
+      margin-bottom: 15px;
+    }
+    label {
+      display: block;
+      margin-bottom: 5px;
+      font-weight: bold;
+    }
+    input[type="text"],
+    input[type="email"],
+    input[type="password"] {
+      width: 100%;
+      padding: 8px;
+      border-radius: 4px;
+      border: 1px solid #ccc;
+      box-sizing: border-box;
+      margin-top: 5px;
+    }
+    .actions {
+      margin-top: 15px;
+      text-align: center;
+    }
+    input[type="submit"] {
+      padding: 8px 20px;
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+    input[type="submit"]:hover {
+      background-color: #45a049;
+    }
+    em {
+      font-style: italic;
+      color: #777;
+      font-size: 12px;
+    }
+    a {
+      text-decoration: none;
+      color: #4CAF50;
+    }
+    .separator {
+      margin-top: 10px;
+      text-align: center;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <h2>Registrarse</h2>
 
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-  <%= render "devise/shared/error_messages", resource: resource %>
+  <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+    <%= render "devise/shared/error_messages", resource: resource %>
 
-  <div class="field">
-    <%= f.label :username, "Nombre de usuario" %>
-    <em>(4 caracteres minimos)</em><br />
-    <%= f.text_field :username%>
-  </div>
+    <div class="field">
+      <%= f.label :username, "Nombre de usuario" %>
+      <em>(Mínimo 4 caracteres)</em><br />
+      <%= f.text_field :username %>
+    </div>
   
-  <div class="field">
-    <%= f.label :email, "Correo Electronico"  %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-  </div>
+    <div class="field">
+      <%= f.label :email, "Correo Electrónico" %><br />
+      <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+    </div>
 
-  <div class="field">
-    <%= f.label :password, "Contraseña"  %>
-    <% if @minimum_password_length %>
-    <em>(<%= @minimum_password_length %> caracteres minimos)</em>
-    <% end %><br />
-    <%= f.password_field :password, autocomplete: "new-password" %>
-  </div>
+    <div class="field">
+      <%= f.label :password, "Contraseña" %>
+      <% if @minimum_password_length %>
+      <em>(Mínimo <%= @minimum_password_length %> caracteres)</em>
+      <% end %><br />
+      <%= f.password_field :password, autocomplete: "new-password" %>
+    </div>
 
-  <div class="field">
-    <%= f.label :password_confirmation, "Confirmar Contraseña" %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
-  </div>
+    <div class="field">
+      <%= f.label :password_confirmation, "Confirmar Contraseña" %><br />
+      <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
+    </div>
 
-  <div class="actions">
-    <%= f.submit "Registrarse" %>
-  </div>
-<% end %>
-<%- if controller_name != 'sessions' %>
-  <%= link_to "Iniciar Sesion", new_session_path(resource_name) %><br />
-<% end %>
+    <div class="actions">
+      <%= f.submit "Registrarse" %>
+    </div>
+    <div class="separator">o</div>
+  <% unless controller_name == 'sessions' %>
+    <div class="separator"><a href="<%= new_session_path(resource_name) %>">Iniciar Sesión</a></div>
+  <% end %>
+  <% end %>
+</body>
+</html>

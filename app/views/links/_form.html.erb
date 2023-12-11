@@ -1,66 +1,122 @@
-<%= form_with(model: link) do |form| %>
-  <% if link.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(link.errors.count, "error") %> han impedido que este enlace se guarde:</h2>
-      <ul>
-        <% link.errors.full_messages.each do |msg| %>
-          <li><%= msg %></li>
-        <% end %>
-      </ul>
-    </div>
-  <% end %>
-
-  <div>
-    <%= form.label :link_name, "Nombre del enlace:", style: "display: block" %>
-    <%= form.text_field :link_name %>
-  </div>
-
-  <div>
-    <%= form.label :url, style: "display: block" %>
-    <%= form.text_field :url %>
-  </div>
-  <div>
-    <%= form.label :link_type, "Tipo de enlace:", style: "display: block" %>
-    <%= form.select :link_type, options_for_select([
-  [I18n.t('link_types.public_link'), 'public_link'],
-  [I18n.t('link_types.private_link'), 'private_link'],
-  [I18n.t('link_types.ephemeral_link'), 'ephemeral_link'],
-  [I18n.t('link_types.temporal_link'), 'temporal_link']
-], selected: @link.link_type), {}, class: 'link-type-select' %>
-
-  </div>
-  
-  <div id="expires_at_field" style="<%= link.temporal_link? ? '' : 'display: none;' %>">
-    <%= form.label :expires_at, "Expira:", style: "display: block" %>
-    <%= form.datetime_field :expires_at %>
-  </div>
-
-  <div id="link_password_field" style="<%= link.private_link? ? '' : 'display: none;' %>">
-    <%= form.label :link_password, "Contraseña:", style: "display: block" %>
-    <%= form.password_field :link_password %>
-  </div>
-
-  <div>
-    <%= form.submit %>
-  </div>
-
-  <script>
-  $(document).ready(function() {
-    function toggleFields(selectedType) {
-      $('#expires_at_field').toggle(selectedType === 'temporal_link');
-      $('#link_password_field').toggle(selectedType === 'private_link');
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 20px;
+      background-color: #f5f5f5;
     }
+    h2 {
+      color: #333;
+    }
+    form {
+      width: 50%;
+      margin: 0 auto;
+      background-color: #fff;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+    #error_explanation {
+      color: #f00;
+      margin-bottom: 20px;
+    }
+    label {
+      display: block;
+      margin-bottom: 5px;
+      font-weight: bold;
+    }
+    input[type="text"],
+    input[type="password"],
+    select {
+      width: calc(100% - 12px);
+      padding: 8px;
+      margin-bottom: 15px;
+      border-radius: 4px;
+      border: 1px solid #ccc;
+    }
+    select {
+      cursor: pointer;
+    }
+    input[type="submit"] {
+      padding: 10px 20px;
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+    input[type="submit"]:hover {
+      background-color: #45a049;
+    }
+  </style>
+</head>
+<body>
+  <%= form_with(model: link) do |form| %>
+    <% if link.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(link.errors.count, "error") %> han impedido que este enlace se guarde:</h2>
+        <ul>
+          <% link.errors.full_messages.each do |msg| %>
+            <li><%= msg %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
 
-    $('.link-type-select').change(function() {
-      var selectedType = $(this).val();
-      toggleFields(selectedType);
-    });
+    <div>
+      <%= form.label :link_name, "Nombre del enlace:" %>
+      <%= form.text_field :link_name %>
+    </div>
 
-    // Show/hide fields based on the default selected value
-    var defaultSelectedType = $('.link-type-select').val();
-    toggleFields(defaultSelectedType);
-  });
-</script>
+    <div>
+      <%= form.label :url, "URL del enlace:" %>
+      <%= form.text_field :url %>
+    </div>
 
+    <div>
+      <%= form.label :link_type, "Tipo de enlace:" %>
+      <%= form.select :link_type, options_for_select([
+        [I18n.t('link_types.public_link'), 'public_link'],
+        [I18n.t('link_types.private_link'), 'private_link'],
+        [I18n.t('link_types.ephemeral_link'), 'ephemeral_link'],
+        [I18n.t('link_types.temporal_link'), 'temporal_link']
+      ], selected: @link.link_type), {}, class: 'link-type-select' %>
+    </div>
+    
+    <div id="expires_at_field" style="<%= link.temporal_link? ? '' : 'display: none; margin-bottom: 15px;' %>">
+      <%= form.label :expires_at, "Expira:" %>
+      <%= form.datetime_field :expires_at %>
+    </div>
 
-<% end %>
+    <div id="link_password_field" style="<%= link.private_link? ? '' : 'display: none;' %>">
+      <%= form.label :link_password, "Contraseña:" %>
+      <%= form.password_field :link_password %>
+    </div>
+
+    <div>
+      <%= form.submit %>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+      $(document).ready(function() {
+        function toggleFields(selectedType) {
+          $('#expires_at_field').toggle(selectedType === 'temporal_link');
+          $('#link_password_field').toggle(selectedType === 'private_link');
+        }
+
+        $('.link-type-select').change(function() {
+          var selectedType = $(this).val();
+          toggleFields(selectedType);
+        });
+
+        // Show/hide fields based on the default selected value
+        var defaultSelectedType = $('.link-type-select').val();
+        toggleFields(defaultSelectedType);
+      });
+    </script>
+  <% end %>
+</body>
+</html>

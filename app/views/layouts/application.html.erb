@@ -1,23 +1,97 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <title>ChqTo</title>
-    <meta name="viewport" content="width=device-width,initial-scale=1">
-    <%= csrf_meta_tags %>
-    <%= csp_meta_tag %>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ChqTo</title>
+  
+  <%= csrf_meta_tags %>
+  <%= csp_meta_tag %>
+  
+  <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+  <%= javascript_importmap_tags %>
+  
+  <style>
+    /* Estilos CSS aquí */
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: white; /* Fondo blanco */
+      color: #333; /* Texto gris oscuro */
+    }
+    header, main, footer {
+      padding: 20px;
+      background-color: white; /* Contenedores con fondo blanco */
+    }
+    header {
+      border-bottom: 2px solid #e74c3c; /* Borde rojo en el encabezado */
+      display: flex;
+      justify-content: flex-end;
+    }
+    .custom-dropdown {
+      position: relative;
+      display: inline-block;
+      cursor: pointer;
+    }
+    .custom-dropdown.active .custom-dropdown-content {
+      display: block;
+      top: 100%;
+      left: 20px;
+      width: max-content;
+      max-height: 200px;
+      overflow-y: auto;
+      position: absolute;
+    }
+    
+    .custom-dropdown-item {
+      padding: 12px 16px;
+      text-decoration: none;
+      display: block;
+      color: #333;
+    }
+    .custom-dropdown-item:hover {
+      background-color: #f1f1f1;
+    }
+  </style>
+</head>
 
-    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
-    <%= javascript_importmap_tags %>
-  </head>
+<body>
+  <header>
+    <div class="custom-dropdown" onclick="toggleCustomDropdown()">
+      <span>Menú</span>
+      <div class="custom-dropdown-content" id="custom-dropdown-content" style="display: none;">
+        <%= link_to "Cerrar Sesión", destroy_user_session_path, data: { turbo_method: :delete }, class: "custom-dropdown-item" %>
+        <%= link_to "Eliminar cuenta", user_registration_path, method: :delete, data: { confirm: "¿Estás seguro?" }, class: "custom-dropdown-item" %>
+      </div>
+    </div>
+  </header>
 
-  <body>
+  <main>
     <p class="notice"><%= notice %></p>
     <p class="alert"><%= alert %></p>
 
     <%= yield %>
-          
-    <%= button_to "Eliminar cuenta", user_registration_path, method: :delete, data: { confirm: "¿Estás seguro?" } %>
+  </main>
+  
+  <footer>
+    <!-- Contenido del pie de página si lo tienes -->
+  </footer>
 
-    <%= link_to "Cerrar Sesion", destroy_user_session_path, data: {turbo_method: :delete} %>
-  </body>
+  <script>
+    function toggleCustomDropdown() {
+      var customDropdownContent = document.getElementById('custom-dropdown-content');
+      customDropdownContent.style.display === 'block' ? customDropdownContent.style.display = 'none' : customDropdownContent.style.display = 'block';
+    }
+
+    document.addEventListener('click', function(event) {
+      var customDropdownContent = document.getElementById('custom-dropdown-content');
+      var customDropdown = document.querySelector('.custom-dropdown');
+
+      if (!customDropdown.contains(event.target)) {
+        customDropdownContent.style.display = 'none';
+      }
+    });
+  </script>
+</body>
 </html>

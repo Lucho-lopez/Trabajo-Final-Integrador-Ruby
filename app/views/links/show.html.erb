@@ -1,52 +1,147 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 20px;
+      background-color: #f5f5f5;
+      color: #333;
+    }
+    h2 {
+      font-size: 24px;
+      margin-bottom: 10px;
+    }
+    form {
+      margin-bottom: 20px;
+    }
+    label {
+      display: block;
+      margin-top: 10px;
+      font-weight: bold;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 20px;
+    }
+    th, td {
+      padding: 8px;
+      text-align: center;
+      border: 1px solid #ddd;
+    }
+    th {
+      background-color: #f2f2f2;
+    }
+    tbody tr:nth-child(even) {
+      background-color: #f9f9f9;
+    }
+    input[type="text"],
+    input[type="date"],
+    input[type="submit"] {
+      width: 100%;
+      padding: 8px;
+      margin-top: 5px;
+      border-radius: 4px;
+      border: 1px solid #ccc;
+    }
+    input[type="submit"] {
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+    input[type="submit"]:hover {
+      background-color: #45a049;
+    }
+    ul {
+      list-style: none;
+      padding: 0;
+    }
+    li {
+      margin-bottom: 15px;
+    }
+    p {
+      margin-bottom: 10px;
+    }
+    /* Estilos para el enlace específico */
+    .link-container {
+      text-align: center;
+    }
+    .link-container a {
+      display: inline-block;
+      padding: 8px 20px;
+      background-color: #4CAF50;
+      color: white;
+      border-radius: 4px;
+      text-decoration: none;
+      transition: background-color 0.3s ease;
+    }
+    .link-container a:hover {
+      background-color: #45a049;
+    }
+  </style>
+</head>
+<body>
+  <h2>Información de Visitas</h2>
 
-<h2>Información de Visitas</h2>
+  <%= form_with(url: request.path, method: :get) do |form| %>
+    <%= form.text_field :ip_address, value: params[:ip_address], placeholder: "Buscar por IP" %>
+    <%= form.label :start_date, "Inicio" %>
+    <%= form.date_field :start_date, value: params[:start_date] %>
+    <%= form.label :end_date, "Fin" %>
+    <%= form.date_field :end_date, value: params[:end_date] %>
+    <%= form.submit "Buscar" %>
+  <% end %>
 
-<%= form_with(url: request.path, method: :get) do |form| %>
-  <%= form.text_field :ip_address, value: params[:ip_address], placeholder: "Buscar por IP" %>
+  <% if @visit_infos.present? %>
+    <table>
+      <thead>
+        <tr>
+          <th>Dirección IP</th>
+          <th>Fue visitado</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @visit_infos.each do |visit_info| %>
+          <tr>
+            <td><%= visit_info.ip_address %></td>
+            <td><%= visit_info.visited_at %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  <% else %>
+    <p>No hay datos de visitas por día para este enlace.</p>
+  <% end %>
 
-  <%= form.label :start_date, "Inicio" %>
-  <%= form.date_field :start_date, value: params[:start_date] %>
+  <%== pagy_nav(@pagy) if @pagy.pages > 1 %>
 
-  <%= form.label :end_date, "Fin" %>
-  <%= form.date_field :end_date, value: params[:end_date] %>
+  <h2>Cantidad de Visitas por Día</h2>
 
-  <%= form.submit "Buscar" %>
-<% end %>
-<% if @visit_infos.present? %>
-  <ul>
-    <% @visit_infos.each do |visit_info| %>
-      <li>
-        <strong>Direccion IP:</strong> <%= visit_info.ip_address %>
-        <br>
-        <strong>Fue visitado:</strong> <%= visit_info.visited_at %>
-      </li>
+  <p><strong>Cantidad de días:</strong> <%= @days %></p>
+
+  <p><strong> Cantidad de visitas:</strong>
+    <% if @total_visits %>
+      <%= @total_visits %> visitas
+    <% else %>
+      No hay visitas registradas aún
     <% end %>
-  </ul>
-<% else %>
-  <p>No hay datos de visitas por día para este enlace.</p>
-<% end %>
+  </p>
 
-<%== pagy_nav(@pagy) if @pagy.pages > 1 %>
+  <p><strong>Promedio de visitas por día:</strong>
+    <% if @average_visits_per_day %>
+      <%= @average_visits_per_day.round(2) %> visitas
+    <% else %>
+      No hay visitas registradas aún
+    <% end %>
+  </p>
 
-<h2>Cantidad de Visitas por Día</h2>
-
-<p><strong>Cantidad de dias:</strong> <%= @days %></p>
-
-<p><strong> Cantidad de visitas:</strong>
-  <% if @total_visits %>
-    <%= @total_visits %> visitas
-  <% else %>
-    No hay visitas registradas aún
-  <% end %>
-</p>
-
-<p><strong>Promedio de visitas por día:</strong>
-  <% if @average_visits_per_day %>
-    <%= @average_visits_per_day.round(2) %> visitas
-  <% else %>
-    No hay visitas registradas aún
-  <% end %>
-</p>
-
-<a href="<%= links_path %>">
-  <span>Volver a links</span></a>
+  <div class="link-container">
+    <a href="<%= links_path %>">
+      <span>Volver a links</span>
+    </a>
+  </div>
+</body>
+</html>
