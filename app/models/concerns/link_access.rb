@@ -3,18 +3,30 @@ module LinkAccess
 
     def access_link
         case link_type
-        when 'regular'
-        true
-        when 'temporal'
-        expires_at > Time.now
-        when 'ephemeral'
-        !visit_infos.present?
+        when 'public_link'
+            true
+        when 'temporal_link'
+            expires_at > Time.now
+        when 'ephemeral_link'
+            visit_infos.empty?
         else
-        false
+            false
         end
     end
 
-    def private?
-        link_type == 'private'
-    end
+    def public_link?
+        link_type == 'public_link'
+      end
+      
+      def private_link?
+        link_type == 'private_link'
+      end
+      
+      def ephemeral_link?
+        link_type == 'ephemeral_link'
+      end
+      
+      def temporal_link?
+        link_type == 'temporal_link'
+      end
 end

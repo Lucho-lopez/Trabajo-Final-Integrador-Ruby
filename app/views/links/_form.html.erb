@@ -22,20 +22,20 @@
   <div>
     <%= form.label :link_type, "Tipo de enlace:", style: "display: block" %>
     <%= form.select :link_type, options_for_select([
-  [I18n.t('link_types.regular'), 'regular'],
-  [I18n.t('link_types.private'), 'private'],
-  [I18n.t('link_types.ephemeral'), 'ephemeral'],
-  [I18n.t('link_types.temporal'), 'temporal']
+  [I18n.t('link_types.public_link'), 'public_link'],
+  [I18n.t('link_types.private_link'), 'private_link'],
+  [I18n.t('link_types.ephemeral_link'), 'ephemeral_link'],
+  [I18n.t('link_types.temporal_link'), 'temporal_link']
 ], selected: @link.link_type), {}, class: 'link-type-select' %>
 
   </div>
   
-  <div id="expires_at_field" style="<%= link.link_type == 'temporal' ? '' : 'display: none;' %>">
+  <div id="expires_at_field" style="<%= link.link_type == 'temporal_link' ? '' : 'display: none;' %>">
     <%= form.label :expires_at, "Expira:", style: "display: block" %>
     <%= form.datetime_field :expires_at %>
   </div>
 
-  <div id="link_password_field" style="<%= link.link_type == 'private' ? '' : 'display: none;' %>">
+  <div id="link_password_field" style="<%= link.link_type == 'private_link' ? '' : 'display: none;' %>">
     <%= form.label :link_password, "Contraseña:", style: "display: block" %>
     <%= form.password_field :link_password %>
   </div>
@@ -49,13 +49,13 @@
       $('.link-type-select').change(function() {
         var selectedType = $(this).val();
         
-        if (selectedType === 'regular' || selectedType === 'ephemeral') {
+        if (selectedType === 'public_link' || selectedType === 'ephemeral_link') {
           $('#expires_at_field').hide();
           $('#link_password_field').hide();
-        } else if (selectedType === 'private') {
+        } else if (selectedType === 'private_link') {
           $('#expires_at_field').hide();
           $('#link_password_field').show();
-        } else if (selectedType === 'temporal') {
+        } else if (selectedType === 'temporal_link') {
           $('#expires_at_field').show();
           $('#link_password_field').hide();
         }
@@ -63,13 +63,13 @@
 
       // Show/hide fields based on the default selected value
       var defaultSelectedType = $('.link-type-select').val();
-      if (defaultSelectedType === 'regular'|| defaultSelectedType === 'ephemeral') {
+      if (defaultSelectedType === 'public_link'|| defaultSelectedType === 'ephemeral_link') {
         $('#expires_at_field').hide();
         $('#link_password_field').hide();
-      } else if (defaultSelectedType === 'private') {
+      } else if (defaultSelectedType === 'private_link') {
         $('#expires_at_field').hide();
         $('#link_password_field').show();
-      } else if (defaultSelectedType === 'temporal') {
+      } else if (defaultSelectedType === 'temporal_link') {
         $('#expires_at_field').show();
         $('#link_password_field').hide();
       }

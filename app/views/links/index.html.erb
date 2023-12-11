@@ -23,13 +23,6 @@
           <td> <%= link_to "Eliminar", link, method: :delete %> </td> 
         </tr>
       <% end %>
-    </tbody>
-  </table>
-  
-<%== pagy_nav(@pagy) if @pagy.pages > 1 %>
-<a href="<%= new_link_path %>">
-<%= link_to "Nuevo link", new_link_path %>
-
 <script>
   document.addEventListener('DOMContentLoaded', function() {
     <% @links.each do |link| %>
@@ -48,3 +41,9 @@
     <% end %>
   });
 </script>
+    </tbody>
+  </table>
+  
+<%== pagy_nav(@pagy) if @pagy.pages > 1 %>
+<a href="<%= new_link_path %>">
+<%= link_to "Nuevo link", new_link_path %>

@@ -4,7 +4,7 @@ es:
       not_saved: "No se pudo guardar el elemento"
 es:
   link_types:
-    regular: 'Regular'
-    private: 'Privado'
-    ephemeral: 'Efímero'
-    temporal: 'Temporal'
+    public_link: 'Publico'
+    private_link: 'Privado'
+    ephemeral_link: 'Efímero'
+    temporal_link: 'Temporal'

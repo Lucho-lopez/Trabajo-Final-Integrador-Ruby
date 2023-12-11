@@ -52,7 +52,7 @@ class LinksController < ApplicationController
   def update
     respond_to do |format|
       if @link.update(link_params)
-        if link_params[:link_password].present? && @link.private?
+        if link_params[:link_password].present? && @link.private_link?
           @link.update(link_password: BCrypt::Password.create(link_params[:link_password]))
         end
         format.html { redirect_to link_url(@link), notice: "El link fue actualizado correctamente." }
@@ -105,18 +105,18 @@ class LinksController < ApplicationController
 
       if !link 
         render 'errors/400', status: :bad_request, layout: false
-      elsif link.private?
+      elsif link.private_link?
         render "private", layout: false
         return
       elsif link.access_link()
         link.create_visit_info(request.remote_ip, Time.current)
         redirect_to link.url, allow_other_host: true
       else 
-        if link.link_type == "temporal"
+        if link.link_type == "temporal_link"
           render 'errors/404', status: :not_found, layout: false
           return
         end
-        if link.link_type == "ephemeral"
+        if link.link_type == "ephemeral_link"
           render 'errors/403', status: :forbidden, layout: false
           return
         end
@@ -129,7 +129,7 @@ class LinksController < ApplicationController
       link = Link.find_by_unique_token(params[:unique_token])
 
       if link
-        if link.link_type == 'private' && BCrypt::Password.new(link.link_password) == params[:password]
+        if link.link_type == 'private_link' && BCrypt::Password.new(link.link_password) == params[:password]
           link.create_visit_info(request.remote_ip, Time.current)
           redirect_to link.url, allow_other_host: true
         else
