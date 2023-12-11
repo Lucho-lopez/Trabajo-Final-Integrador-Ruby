@@ -107,6 +107,9 @@ class LinksController < ApplicationController
   def update
     respond_to do |format|
       if @link.update(link_params)
+        if link_params[:link_password].present? && @link.private?
+          @link.update(link_password: BCrypt::Password.create(link_params[:link_password]))
+        end
         format.html { redirect_to link_url(@link), notice: "El link fue actualizado correctamente." }
         format.json { render :show, status: :ok, location: @link }
       else
