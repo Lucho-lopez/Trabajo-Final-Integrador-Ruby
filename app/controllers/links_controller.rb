@@ -35,8 +35,6 @@ class LinksController < ApplicationController
 
   def create
     @link = current_user.links.build(link_params)
-    
-    handle_link_password
 
     respond_to do |format|
       if @link.save
@@ -52,9 +50,6 @@ class LinksController < ApplicationController
   def update
     respond_to do |format|
       if @link.update(link_params)
-        if link_params[:link_password].present? && @link.private_link?
-          @link.update(link_password: BCrypt::Password.create(link_params[:link_password]))
-        end
         format.html { redirect_to links_url, notice: "El link fue actualizado correctamente." }
         format.json { render :index, status: :ok, location: @link }
       else
@@ -144,10 +139,6 @@ class LinksController < ApplicationController
         flash[:alert] = "El enlace no existe"
         redirect_to root_path 
       end
-    end
-
-    def handle_link_password
-      @link.link_password = BCrypt::Password.create(link_params[:link_password]) if link_params[:link_password].present?
     end
 
     def link_params
