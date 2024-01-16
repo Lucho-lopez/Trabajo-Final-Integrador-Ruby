@@ -1,7 +1,8 @@
 class Link < ApplicationRecord
   belongs_to :user
   has_many :visit_infos, dependent: :destroy
-  
+  before_save :encrypt_password_if_present
+
   include UniqueToken
   include LinkAccess
   include LinkValidations
@@ -30,5 +31,11 @@ end
 
   def create_visit_info(ip_address, visited_at)
     visit_infos.create(ip_address: ip_address, visited_at: visited_at)
+  end
+end
+
+def encrypt_password_if_present
+  if link_password.present? && private_link?
+    self.link_password = BCrypt::Password.create(link_password)
   end
 end
