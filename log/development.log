@@ -37358,3 +37358,717 @@ Migrating to AddUsernameToUsers (20231209213816)
   [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
   [1m[36mLink Load (1.9ms)[0m  [1m[34mSELECT "links".* FROM "links" WHERE "links"."id" = ? LIMIT ?[0m  [["id", 12], ["LIMIT", 1]]
   [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mrollback transaction[0m
+Started GET "/links" for 127.0.0.1 at 2023-12-13 18:34:43 -0300
+  [1m[36mActiveRecord::SchemaMigration Load (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by LinksController#index as HTML
+Completed 401 Unauthorized in 49ms (ActiveRecord: 0.0ms | Allocations: 2146)
+
+
+Started GET "/users/sign_in" for 127.0.0.1 at 2023-12-13 18:34:44 -0300
+Processing by Devise::SessionsController#new as HTML
+  Rendering layout layouts/devise/sessions.html.erb
+  Rendering devise/sessions/new.html.erb within layouts/devise/sessions
+  Rendered devise/shared/_links.html.erb (Duration: 3.4ms | Allocations: 574)
+  Rendered devise/sessions/new.html.erb within layouts/devise/sessions (Duration: 55.1ms | Allocations: 2713)
+  Rendered layout layouts/devise/sessions.html.erb (Duration: 628.5ms | Allocations: 40083)
+Completed 200 OK in 1717ms (Views: 728.2ms | ActiveRecord: 4.5ms | Allocations: 58300)
+
+
+Started POST "/users/sign_in" for 127.0.0.1 at 2023-12-13 18:34:49 -0300
+Processing by Devise::SessionsController#create as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]", "user"=>{"login"=>"", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Confirmar"}
+Completed 401 Unauthorized in 3ms (ActiveRecord: 0.0ms | Allocations: 459)
+
+
+Processing by Devise::SessionsController#new as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]", "user"=>{"login"=>"", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Confirmar"}
+  Rendering layout layouts/devise/sessions.html.erb
+  Rendering devise/sessions/new.html.erb within layouts/devise/sessions
+  Rendered devise/shared/_links.html.erb (Duration: 1.2ms | Allocations: 122)
+  Rendered devise/sessions/new.html.erb within layouts/devise/sessions (Duration: 6.9ms | Allocations: 685)
+  Rendered layout layouts/devise/sessions.html.erb (Duration: 13.7ms | Allocations: 2723)
+Completed 200 OK in 17ms (Views: 15.3ms | ActiveRecord: 0.0ms | Allocations: 3181)
+
+
+Started GET "/users/sign_up" for 127.0.0.1 at 2023-12-13 18:34:56 -0300
+Processing by Devise::RegistrationsController#new as HTML
+  Rendering layout layouts/devise/registrations.html.erb
+  Rendering devise/registrations/new.html.erb within layouts/devise/registrations
+  Rendered devise/shared/_error_messages.html.erb (Duration: 1.6ms | Allocations: 221)
+  Rendered devise/registrations/new.html.erb within layouts/devise/registrations (Duration: 22.0ms | Allocations: 1681)
+  Rendered layout layouts/devise/registrations.html.erb (Duration: 29.0ms | Allocations: 3935)
+Completed 200 OK in 58ms (Views: 55.6ms | ActiveRecord: 0.0ms | Allocations: 4907)
+
+
+Started POST "/users" for 127.0.0.1 at 2023-12-13 18:34:57 -0300
+Processing by Devise::RegistrationsController#create as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]", "user"=>{"username"=>"", "email"=>"", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "commit"=>"Registrarse"}
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Exists? (4.7ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE LOWER("users"."username") = LOWER(?) LIMIT ?[0m  [["username", ""], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mrollback transaction[0m
+  Rendering layout layouts/devise/registrations.html.erb
+  Rendering devise/registrations/new.html.erb within layouts/devise/registrations
+  Rendered devise/shared/_error_messages.html.erb (Duration: 3.9ms | Allocations: 1382)
+  Rendered devise/registrations/new.html.erb within layouts/devise/registrations (Duration: 14.7ms | Allocations: 3682)
+  Rendered layout layouts/devise/registrations.html.erb (Duration: 28.8ms | Allocations: 5721)
+Completed 422 Unprocessable Entity in 179ms (Views: 30.1ms | ActiveRecord: 4.9ms | Allocations: 19830)
+
+
+Started GET "/users/sign_up" for 127.0.0.1 at 2023-12-13 18:35:17 -0300
+Processing by Devise::RegistrationsController#new as HTML
+  Rendering layout layouts/devise/registrations.html.erb
+  Rendering devise/registrations/new.html.erb within layouts/devise/registrations
+  Rendered devise/shared/_error_messages.html.erb (Duration: 1.1ms | Allocations: 213)
+  Rendered devise/registrations/new.html.erb within layouts/devise/registrations (Duration: 7.3ms | Allocations: 1634)
+  Rendered layout layouts/devise/registrations.html.erb (Duration: 50.0ms | Allocations: 16309)
+Completed 200 OK in 70ms (Views: 55.0ms | ActiveRecord: 5.4ms | Allocations: 22281)
+
+
+Started POST "/users" for 127.0.0.1 at 2023-12-13 18:35:25 -0300
+Processing by Devise::RegistrationsController#create as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]", "user"=>{"username"=>"", "email"=>"", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "commit"=>"Registrarse"}
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Exists? (5.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE LOWER("users"."username") = LOWER(?) LIMIT ?[0m  [["username", ""], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mrollback transaction[0m
+  Rendering layout layouts/devise/registrations.html.erb
+  Rendering devise/registrations/new.html.erb within layouts/devise/registrations
+  Rendered devise/shared/_error_messages.html.erb (Duration: 5.7ms | Allocations: 1139)
+  Rendered devise/registrations/new.html.erb within layouts/devise/registrations (Duration: 14.5ms | Allocations: 3432)
+  Rendered layout layouts/devise/registrations.html.erb (Duration: 20.9ms | Allocations: 5476)
+Completed 422 Unprocessable Entity in 42ms (Views: 21.8ms | ActiveRecord: 5.4ms | Allocations: 11232)
+
+
+Started GET "/users/sign_up" for 127.0.0.1 at 2023-12-13 18:36:59 -0300
+Processing by Devise::RegistrationsController#new as HTML
+  Rendering layout layouts/devise/registrations.html.erb
+  Rendering devise/registrations/new.html.erb within layouts/devise/registrations
+  Rendered devise/shared/_error_messages.html.erb (Duration: 1.1ms | Allocations: 213)
+  Rendered devise/registrations/new.html.erb within layouts/devise/registrations (Duration: 8.2ms | Allocations: 1636)
+  Rendered layout layouts/devise/registrations.html.erb (Duration: 40.0ms | Allocations: 16183)
+Completed 200 OK in 58ms (Views: 45.5ms | ActiveRecord: 3.2ms | Allocations: 22138)
+
+
+Started POST "/users" for 127.0.0.1 at 2023-12-13 18:37:01 -0300
+Processing by Devise::RegistrationsController#create as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]", "user"=>{"username"=>"", "email"=>"", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "commit"=>"Registrarse"}
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Exists? (2.7ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE LOWER("users"."username") = LOWER(?) LIMIT ?[0m  [["username", ""], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mrollback transaction[0m
+  Rendering layout layouts/devise/registrations.html.erb
+  Rendering devise/registrations/new.html.erb within layouts/devise/registrations
+  Rendered devise/shared/_error_messages.html.erb (Duration: 2.7ms | Allocations: 1148)
+  Rendered devise/registrations/new.html.erb within layouts/devise/registrations (Duration: 11.2ms | Allocations: 3441)
+  Rendered layout layouts/devise/registrations.html.erb (Duration: 17.1ms | Allocations: 5501)
+Completed 422 Unprocessable Entity in 36ms (Views: 18.1ms | ActiveRecord: 2.9ms | Allocations: 11271)
+
+
+Started GET "/users/sign_up" for 127.0.0.1 at 2023-12-13 18:43:20 -0300
+  [1m[36mActiveRecord::SchemaMigration Load (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Devise::RegistrationsController#new as HTML
+  Rendering layout layouts/devise/registrations.html.erb
+  Rendering devise/registrations/new.html.erb within layouts/devise/registrations
+  Rendered devise/shared/_error_messages.html.erb (Duration: 1.0ms | Allocations: 235)
+  Rendered devise/registrations/new.html.erb within layouts/devise/registrations (Duration: 9.7ms | Allocations: 2821)
+  Rendered layout layouts/devise/registrations.html.erb (Duration: 105.7ms | Allocations: 39862)
+Completed 200 OK in 254ms (Views: 188.2ms | ActiveRecord: 2.4ms | Allocations: 90212)
+
+
+Started POST "/users" for 127.0.0.1 at 2023-12-13 18:43:25 -0300
+Processing by Devise::RegistrationsController#create as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]", "user"=>{"username"=>"", "email"=>"", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "commit"=>"Registrarse"}
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Exists? (5.8ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE LOWER("users"."username") = LOWER(?) LIMIT ?[0m  [["username", ""], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mrollback transaction[0m
+  Rendering layout layouts/devise/registrations.html.erb
+  Rendering devise/registrations/new.html.erb within layouts/devise/registrations
+  Rendered devise/shared/_error_messages.html.erb (Duration: 4.3ms | Allocations: 1773)
+  Rendered devise/registrations/new.html.erb within layouts/devise/registrations (Duration: 13.0ms | Allocations: 4074)
+  Rendered layout layouts/devise/registrations.html.erb (Duration: 18.5ms | Allocations: 6099)
+Completed 422 Unprocessable Entity in 52ms (Views: 19.4ms | ActiveRecord: 6.0ms | Allocations: 15104)
+
+
+Started GET "/" for 127.0.0.1 at 2024-01-16 09:18:20 -0300
+  [1m[36mActiveRecord::SchemaMigration Load (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by DashboardController#index as HTML
+Completed 401 Unauthorized in 78ms (ActiveRecord: 0.0ms | Allocations: 2112)
+
+
+Started GET "/users/sign_in" for 127.0.0.1 at 2024-01-16 09:18:21 -0300
+Processing by Devise::SessionsController#new as HTML
+  Rendering layout layouts/devise/sessions.html.erb
+  Rendering devise/sessions/new.html.erb within layouts/devise/sessions
+  Rendered devise/shared/_links.html.erb (Duration: 1.9ms | Allocations: 574)
+  Rendered devise/sessions/new.html.erb within layouts/devise/sessions (Duration: 53.5ms | Allocations: 2709)
+  Rendered layout layouts/devise/sessions.html.erb (Duration: 210.5ms | Allocations: 39717)
+Completed 200 OK in 343ms (Views: 252.4ms | ActiveRecord: 2.9ms | Allocations: 56687)
+
+
+Started GET "/users/sign_up" for 127.0.0.1 at 2024-01-16 09:18:28 -0300
+Processing by Devise::RegistrationsController#new as HTML
+  Rendering layout layouts/devise/registrations.html.erb
+  Rendering devise/registrations/new.html.erb within layouts/devise/registrations
+  Rendered devise/shared/_error_messages.html.erb (Duration: 2.4ms | Allocations: 221)
+  Rendered devise/registrations/new.html.erb within layouts/devise/registrations (Duration: 23.2ms | Allocations: 1681)
+  Rendered layout layouts/devise/registrations.html.erb (Duration: 36.0ms | Allocations: 3935)
+Completed 200 OK in 69ms (Views: 66.2ms | ActiveRecord: 0.0ms | Allocations: 4900)
+
+
+Started GET "/users/sign_in" for 127.0.0.1 at 2024-01-16 09:18:54 -0300
+Processing by Devise::SessionsController#new as HTML
+  Rendering layout layouts/devise/sessions.html.erb
+  Rendering devise/sessions/new.html.erb within layouts/devise/sessions
+  Rendered devise/shared/_links.html.erb (Duration: 0.7ms | Allocations: 122)
+  Rendered devise/sessions/new.html.erb within layouts/devise/sessions (Duration: 4.4ms | Allocations: 702)
+  Rendered layout layouts/devise/sessions.html.erb (Duration: 13.9ms | Allocations: 2726)
+Completed 200 OK in 20ms (Views: 16.3ms | ActiveRecord: 0.0ms | Allocations: 3330)
+
+
+Started POST "/users/sign_in" for 127.0.0.1 at 2024-01-16 09:21:12 -0300
+Processing by Devise::SessionsController#create as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]", "user"=>{"login"=>"conlinks", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Confirmar"}
+  [1m[36mUser Load (6.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE (lower(username) = 'conlinks' OR lower(email) = 'conlinks') ORDER BY "users"."id" ASC LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/models/user.rb:19:in `find_first_by_auth_conditions'
+Redirected to http://127.0.0.1:3000/
+Completed 303 See Other in 459ms (ActiveRecord: 6.5ms | Allocations: 4935)
+
+
+Started GET "/" for 127.0.0.1 at 2024-01-16 09:21:13 -0300
+Processing by DashboardController#index as TURBO_STREAM
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  Rendering dashboard/index.html.erb within layouts/application
+  Rendered dashboard/index.html.erb within layouts/application (Duration: 1.3ms | Allocations: 179)
+  Rendered layout layouts/application.html.erb (Duration: 16.1ms | Allocations: 2829)
+Completed 200 OK in 51ms (Views: 41.7ms | ActiveRecord: 0.2ms | Allocations: 5804)
+
+
+Started GET "/links" for 127.0.0.1 at 2024-01-16 09:21:19 -0300
+Processing by LinksController#index as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mLink Count (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "links" WHERE "links"."user_id" = ?[0m  [["user_id", 2]]
+  ↳ app/controllers/links_controller.rb:7:in `index'
+  Rendering layout layouts/application.html.erb
+  Rendering links/index.html.erb within layouts/application
+  [1m[36mLink Load (0.7ms)[0m  [1m[34mSELECT "links".* FROM "links" WHERE "links"."user_id" = ? ORDER BY "links"."created_at" DESC LIMIT ? OFFSET ?[0m  [["user_id", 2], ["LIMIT", 5], ["OFFSET", 0]]
+  ↳ app/views/links/index.html.erb:106
+  Rendered links/index.html.erb within layouts/application (Duration: 8.8ms | Allocations: 991)
+  Rendered layout layouts/application.html.erb (Duration: 25.8ms | Allocations: 3105)
+Completed 200 OK in 197ms (Views: 28.2ms | ActiveRecord: 1.6ms | Allocations: 8891)
+
+
+Started GET "/links/2" for 127.0.0.1 at 2024-01-16 09:21:32 -0300
+Processing by LinksController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mLink Load (1.2ms)[0m  [1m[34mSELECT "links".* FROM "links" WHERE "links"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/links_controller.rb:79:in `set_link'
+Completed 404 Not Found in 22ms (ActiveRecord: 2.2ms | Allocations: 2984)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find Link with 'id'=2):
+  
+app/controllers/links_controller.rb:79:in `set_link'
+Started DELETE "/users" for 127.0.0.1 at 2024-01-16 09:21:53 -0300
+Processing by Devise::RegistrationsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mLink Load (3.0ms)[0m  [1m[34mSELECT "links".* FROM "links" WHERE "links"."user_id" = ?[0m  [["user_id", 2]]
+  [1m[36mUser Destroy (0.3ms)[0m  [1m[31mDELETE FROM "users" WHERE "users"."id" = ?[0m  [["id", 2]]
+  [1m[36mTRANSACTION (68.7ms)[0m  [1m[36mcommit transaction[0m
+Redirected to http://127.0.0.1:3000/
+Completed 303 See Other in 220ms (ActiveRecord: 72.1ms | Allocations: 13637)
+
+
+Started GET "/" for 127.0.0.1 at 2024-01-16 09:21:53 -0300
+Processing by DashboardController#index as HTML
+Completed 401 Unauthorized in 1ms (ActiveRecord: 0.0ms | Allocations: 291)
+
+
+Started GET "/users/sign_in" for 127.0.0.1 at 2024-01-16 09:21:53 -0300
+Processing by Devise::SessionsController#new as HTML
+  Rendering layout layouts/devise/sessions.html.erb
+  Rendering devise/sessions/new.html.erb within layouts/devise/sessions
+  Rendered devise/shared/_links.html.erb (Duration: 0.7ms | Allocations: 122)
+  Rendered devise/sessions/new.html.erb within layouts/devise/sessions (Duration: 3.9ms | Allocations: 708)
+  Rendered layout layouts/devise/sessions.html.erb (Duration: 10.8ms | Allocations: 2768)
+Completed 200 OK in 19ms (Views: 12.9ms | ActiveRecord: 0.0ms | Allocations: 3349)
+
+
+Started POST "/users/sign_in" for 127.0.0.1 at 2024-01-16 09:22:03 -0300
+Processing by Devise::SessionsController#create as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]", "user"=>{"login"=>"conlinks", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Confirmar"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE (lower(username) = 'conlinks' OR lower(email) = 'conlinks') ORDER BY "users"."id" ASC LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/models/user.rb:19:in `find_first_by_auth_conditions'
+Completed 401 Unauthorized in 6ms (ActiveRecord: 0.5ms | Allocations: 939)
+
+
+Processing by Devise::SessionsController#new as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]", "user"=>{"login"=>"conlinks", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Confirmar"}
+  Rendering layout layouts/devise/sessions.html.erb
+  Rendering devise/sessions/new.html.erb within layouts/devise/sessions
+  Rendered devise/shared/_links.html.erb (Duration: 0.4ms | Allocations: 122)
+  Rendered devise/sessions/new.html.erb within layouts/devise/sessions (Duration: 2.1ms | Allocations: 679)
+  Rendered layout layouts/devise/sessions.html.erb (Duration: 5.7ms | Allocations: 2703)
+Completed 200 OK in 352ms (Views: 6.6ms | ActiveRecord: 0.0ms | Allocations: 3216)
+
+
+Started POST "/users/sign_in" for 127.0.0.1 at 2024-01-16 09:22:21 -0300
+Processing by Devise::SessionsController#create as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]", "user"=>{"login"=>"conlinks", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Confirmar"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE (lower(username) = 'conlinks' OR lower(email) = 'conlinks') ORDER BY "users"."id" ASC LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/models/user.rb:19:in `find_first_by_auth_conditions'
+Completed 401 Unauthorized in 10ms (ActiveRecord: 0.3ms | Allocations: 937)
+
+
+Processing by Devise::SessionsController#new as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]", "user"=>{"login"=>"conlinks", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Confirmar"}
+  Rendering layout layouts/devise/sessions.html.erb
+  Rendering devise/sessions/new.html.erb within layouts/devise/sessions
+  Rendered devise/shared/_links.html.erb (Duration: 0.4ms | Allocations: 122)
+  Rendered devise/sessions/new.html.erb within layouts/devise/sessions (Duration: 2.3ms | Allocations: 678)
+  Rendered layout layouts/devise/sessions.html.erb (Duration: 5.9ms | Allocations: 2702)
+Completed 200 OK in 348ms (Views: 6.5ms | ActiveRecord: 0.0ms | Allocations: 3170)
+
+
+Started POST "/users/sign_in" for 127.0.0.1 at 2024-01-16 09:23:09 -0300
+Processing by Devise::SessionsController#create as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]", "user"=>{"login"=>"conlinks@conlinks.com", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Confirmar"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE (lower(username) = 'conlinks@conlinks.com' OR lower(email) = 'conlinks@conlinks.com') ORDER BY "users"."id" ASC LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/models/user.rb:19:in `find_first_by_auth_conditions'
+Completed 401 Unauthorized in 16ms (ActiveRecord: 0.4ms | Allocations: 965)
+
+
+Processing by Devise::SessionsController#new as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]", "user"=>{"login"=>"conlinks@conlinks.com", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Confirmar"}
+  Rendering layout layouts/devise/sessions.html.erb
+  Rendering devise/sessions/new.html.erb within layouts/devise/sessions
+  Rendered devise/shared/_links.html.erb (Duration: 0.5ms | Allocations: 122)
+  Rendered devise/sessions/new.html.erb within layouts/devise/sessions (Duration: 2.4ms | Allocations: 678)
+  Rendered layout layouts/devise/sessions.html.erb (Duration: 6.8ms | Allocations: 2702)
+Completed 200 OK in 360ms (Views: 7.5ms | ActiveRecord: 0.0ms | Allocations: 3168)
+
+
+Started POST "/users/sign_in" for 127.0.0.1 at 2024-01-16 09:23:35 -0300
+Processing by Devise::SessionsController#create as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]", "user"=>{"login"=>"sinlinks", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Confirmar"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE (lower(username) = 'sinlinks' OR lower(email) = 'sinlinks') ORDER BY "users"."id" ASC LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/models/user.rb:19:in `find_first_by_auth_conditions'
+Redirected to http://127.0.0.1:3000/
+Completed 303 See Other in 345ms (ActiveRecord: 0.3ms | Allocations: 1799)
+
+
+Started GET "/" for 127.0.0.1 at 2024-01-16 09:23:35 -0300
+Processing by DashboardController#index as TURBO_STREAM
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  Rendering dashboard/index.html.erb within layouts/application
+  Rendered dashboard/index.html.erb within layouts/application (Duration: 0.1ms | Allocations: 30)
+  Rendered layout layouts/application.html.erb (Duration: 4.5ms | Allocations: 2140)
+Completed 200 OK in 8ms (Views: 5.1ms | ActiveRecord: 0.1ms | Allocations: 3745)
+
+
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.1ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1[0m  [[nil, "environment"]]
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.1ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1[0m  [[nil, "environment"]]
+  [1m[36mActiveRecord::SchemaMigration Load (0.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.1ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1[0m  [[nil, "environment"]]
+  [1m[35m (82.0ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" varchar NOT NULL PRIMARY KEY)[0m
+  [1m[35m (0.3ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" varchar NOT NULL PRIMARY KEY, "value" varchar, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.1ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1[0m  [[nil, "environment"]]
+  [1m[36mActiveRecord::InternalMetadata Create (0.2ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ('environment', 'development', '2024-01-16 12:27:28.671509', '2024-01-16 12:27:28.671514') RETURNING "key"[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to DeviseCreateUsers (20231201221308)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (3.6ms)[0m  [1m[35mCREATE TABLE "users" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "email" varchar DEFAULT '' NOT NULL, "encrypted_password" varchar DEFAULT '' NOT NULL, "reset_password_token" varchar, "reset_password_sent_at" datetime(6), "remember_created_at" datetime(6), "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[35m (0.3ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_users_on_email" ON "users" ("email")[0m
+  [1m[35m (0.3ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_users_on_reset_password_token" ON "users" ("reset_password_token")[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.5ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ('20231201221308') RETURNING "version"[0m
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[36mcommit transaction[0m
+Migrating to CreateLinks (20231202171027)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (1.9ms)[0m  [1m[35mCREATE TABLE "links" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "link_name" varchar, "url" varchar, "link_type" integer DEFAULT 0, "expires_at" datetime(6), "link_password" varchar, "unique_token" varchar, "user_id" integer, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, CONSTRAINT "fk_rails_005e9b2a6a"
+FOREIGN KEY ("user_id")
+  REFERENCES "users" ("id")
+)[0m
+  [1m[35m (0.6ms)[0m  [1m[35mCREATE INDEX "index_links_on_user_id" ON "links" ("user_id")[0m
+  [1m[36mActiveRecord::SchemaMigration Create (1.0ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ('20231202171027') RETURNING "version"[0m
+  [1m[36mTRANSACTION (0.7ms)[0m  [1m[36mcommit transaction[0m
+Migrating to CreateVisitInfos (20231206120926)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (4.2ms)[0m  [1m[35mCREATE TABLE "visit_infos" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "ip_address" varchar, "visited_at" datetime(6), "link_id" integer, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, CONSTRAINT "fk_rails_eaf64aca2a"
+FOREIGN KEY ("link_id")
+  REFERENCES "links" ("id")
+)[0m
+  [1m[35m (0.5ms)[0m  [1m[35mCREATE INDEX "index_visit_infos_on_link_id" ON "visit_infos" ("link_id")[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ('20231206120926') RETURNING "version"[0m
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[36mcommit transaction[0m
+Migrating to AddUsernameToUsers (20231209213816)
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (6.7ms)[0m  [1m[35mALTER TABLE "users" ADD "username" varchar[0m
+  [1m[35m (0.4ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_users_on_username" ON "users" ("username")[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ('20231209213816') RETURNING "version"[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Exists? (2.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE LOWER("users"."username") = LOWER(?) LIMIT ?[0m  [["username", "sinlinks"], ["LIMIT", 1]]
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "sinlinks@sinlinks.com"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.3ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "reset_password_token", "reset_password_sent_at", "remember_created_at", "created_at", "updated_at", "username") VALUES (?, ?, ?, ?, ?, ?, ?, ?) RETURNING "id"[0m  [["email", "sinlinks@sinlinks.com"], ["encrypted_password", "[FILTERED]"], ["reset_password_token", "[FILTERED]"], ["reset_password_sent_at", "[FILTERED]"], ["remember_created_at", nil], ["created_at", "2024-01-16 12:27:37.117660"], ["updated_at", "2024-01-16 12:27:37.117660"], ["username", "sinlinks"]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Exists? (1.9ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE LOWER("users"."username") = LOWER(?) LIMIT ?[0m  [["username", "conlinks"], ["LIMIT", 1]]
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "conlinks@conlinks.com"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.2ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "reset_password_token", "reset_password_sent_at", "remember_created_at", "created_at", "updated_at", "username") VALUES (?, ?, ?, ?, ?, ?, ?, ?) RETURNING "id"[0m  [["email", "conlinks@conlinks.com"], ["encrypted_password", "[FILTERED]"], ["reset_password_token", "[FILTERED]"], ["reset_password_sent_at", "[FILTERED]"], ["remember_created_at", nil], ["created_at", "2024-01-16 12:27:37.452180"], ["updated_at", "2024-01-16 12:27:37.452180"], ["username", "conlinks"]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Load (2.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mLink Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "links" WHERE "links"."unique_token" = ? LIMIT ?[0m  [["unique_token", "[FILTERED]"], ["LIMIT", 1]]
+  ↳ app/models/concerns/unique_token.rb:11:in `generate_unique_token'
+  [1m[36mLink Create (0.2ms)[0m  [1m[32mINSERT INTO "links" ("link_name", "url", "link_type", "expires_at", "link_password", "unique_token", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?) RETURNING "id"[0m  [["link_name", "nombre_link"], ["url", "https://www.google.com/"], ["link_type", 0], ["expires_at", nil], ["link_password", "[FILTERED]"], ["unique_token", "[FILTERED]"], ["user_id", 2], ["created_at", "2024-01-16 12:27:37.550412"], ["updated_at", "2024-01-16 12:27:37.550412"]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Load (14.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mLink Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "links" WHERE "links"."unique_token" = ? LIMIT ?[0m  [["unique_token", "[FILTERED]"], ["LIMIT", 1]]
+  ↳ app/models/concerns/unique_token.rb:11:in `generate_unique_token'
+  [1m[36mLink Create (0.2ms)[0m  [1m[32mINSERT INTO "links" ("link_name", "url", "link_type", "expires_at", "link_password", "unique_token", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?) RETURNING "id"[0m  [["link_name", "nombre_link"], ["url", "https://www.google.com/"], ["link_type", 0], ["expires_at", nil], ["link_password", "[FILTERED]"], ["unique_token", "[FILTERED]"], ["user_id", 2], ["created_at", "2024-01-16 12:27:37.572497"], ["updated_at", "2024-01-16 12:27:37.572497"]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Load (1.8ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mLink Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "links" WHERE "links"."unique_token" = ? LIMIT ?[0m  [["unique_token", "[FILTERED]"], ["LIMIT", 1]]
+  ↳ app/models/concerns/unique_token.rb:11:in `generate_unique_token'
+  [1m[36mLink Create (0.2ms)[0m  [1m[32mINSERT INTO "links" ("link_name", "url", "link_type", "expires_at", "link_password", "unique_token", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?) RETURNING "id"[0m  [["link_name", "nombre_link"], ["url", "https://www.google.com/"], ["link_type", 0], ["expires_at", nil], ["link_password", "[FILTERED]"], ["unique_token", "[FILTERED]"], ["user_id", 2], ["created_at", "2024-01-16 12:27:37.582793"], ["updated_at", "2024-01-16 12:27:37.582793"]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Load (1.7ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mLink Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "links" WHERE "links"."unique_token" = ? LIMIT ?[0m  [["unique_token", "[FILTERED]"], ["LIMIT", 1]]
+  ↳ app/models/concerns/unique_token.rb:11:in `generate_unique_token'
+  [1m[36mLink Create (0.2ms)[0m  [1m[32mINSERT INTO "links" ("link_name", "url", "link_type", "expires_at", "link_password", "unique_token", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?) RETURNING "id"[0m  [["link_name", "nombre_link"], ["url", "https://www.google.com/"], ["link_type", 0], ["expires_at", nil], ["link_password", "[FILTERED]"], ["unique_token", "[FILTERED]"], ["user_id", 2], ["created_at", "2024-01-16 12:27:37.592640"], ["updated_at", "2024-01-16 12:27:37.592640"]]
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Load (1.7ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mLink Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "links" WHERE "links"."unique_token" = ? LIMIT ?[0m  [["unique_token", "[FILTERED]"], ["LIMIT", 1]]
+  ↳ app/models/concerns/unique_token.rb:11:in `generate_unique_token'
+  [1m[36mLink Create (0.2ms)[0m  [1m[32mINSERT INTO "links" ("link_name", "url", "link_type", "expires_at", "link_password", "unique_token", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?) RETURNING "id"[0m  [["link_name", "nombre_link"], ["url", "https://www.google.com/"], ["link_type", 0], ["expires_at", nil], ["link_password", "[FILTERED]"], ["unique_token", "[FILTERED]"], ["user_id", 2], ["created_at", "2024-01-16 12:27:37.602043"], ["updated_at", "2024-01-16 12:27:37.602043"]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Load (1.8ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mLink Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "links" WHERE "links"."unique_token" = ? LIMIT ?[0m  [["unique_token", "[FILTERED]"], ["LIMIT", 1]]
+  ↳ app/models/concerns/unique_token.rb:11:in `generate_unique_token'
+  [1m[36mLink Create (0.3ms)[0m  [1m[32mINSERT INTO "links" ("link_name", "url", "link_type", "expires_at", "link_password", "unique_token", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?) RETURNING "id"[0m  [["link_name", "nombre_link"], ["url", "https://www.google.com/"], ["link_type", 0], ["expires_at", nil], ["link_password", "[FILTERED]"], ["unique_token", "[FILTERED]"], ["user_id", 2], ["created_at", "2024-01-16 12:27:37.611668"], ["updated_at", "2024-01-16 12:27:37.611668"]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Load (2.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mLink Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "links" WHERE "links"."unique_token" = ? LIMIT ?[0m  [["unique_token", "[FILTERED]"], ["LIMIT", 1]]
+  ↳ app/models/concerns/unique_token.rb:11:in `generate_unique_token'
+  [1m[36mLink Create (0.2ms)[0m  [1m[32mINSERT INTO "links" ("link_name", "url", "link_type", "expires_at", "link_password", "unique_token", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?) RETURNING "id"[0m  [["link_name", "nombre_link"], ["url", "https://www.google.com/"], ["link_type", 0], ["expires_at", nil], ["link_password", "[FILTERED]"], ["unique_token", "[FILTERED]"], ["user_id", 2], ["created_at", "2024-01-16 12:27:37.623311"], ["updated_at", "2024-01-16 12:27:37.623311"]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Load (1.8ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mLink Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "links" WHERE "links"."unique_token" = ? LIMIT ?[0m  [["unique_token", "[FILTERED]"], ["LIMIT", 1]]
+  ↳ app/models/concerns/unique_token.rb:11:in `generate_unique_token'
+  [1m[36mLink Create (0.2ms)[0m  [1m[32mINSERT INTO "links" ("link_name", "url", "link_type", "expires_at", "link_password", "unique_token", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?) RETURNING "id"[0m  [["link_name", "nombre_link"], ["url", "https://www.google.com/"], ["link_type", 0], ["expires_at", nil], ["link_password", "[FILTERED]"], ["unique_token", "[FILTERED]"], ["user_id", 2], ["created_at", "2024-01-16 12:27:37.634440"], ["updated_at", "2024-01-16 12:27:37.634440"]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Load (2.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mLink Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "links" WHERE "links"."unique_token" = ? LIMIT ?[0m  [["unique_token", "[FILTERED]"], ["LIMIT", 1]]
+  ↳ app/models/concerns/unique_token.rb:11:in `generate_unique_token'
+  [1m[36mLink Create (0.2ms)[0m  [1m[32mINSERT INTO "links" ("link_name", "url", "link_type", "expires_at", "link_password", "unique_token", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?) RETURNING "id"[0m  [["link_name", "nombre_link"], ["url", "https://www.google.com/"], ["link_type", 0], ["expires_at", nil], ["link_password", "[FILTERED]"], ["unique_token", "[FILTERED]"], ["user_id", 2], ["created_at", "2024-01-16 12:27:37.644711"], ["updated_at", "2024-01-16 12:27:37.644711"]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Load (3.7ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mLink Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "links" WHERE "links"."unique_token" = ? LIMIT ?[0m  [["unique_token", "[FILTERED]"], ["LIMIT", 1]]
+  ↳ app/models/concerns/unique_token.rb:11:in `generate_unique_token'
+  [1m[36mLink Create (0.2ms)[0m  [1m[32mINSERT INTO "links" ("link_name", "url", "link_type", "expires_at", "link_password", "unique_token", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?) RETURNING "id"[0m  [["link_name", "nombre_link"], ["url", "https://www.google.com/"], ["link_type", 0], ["expires_at", nil], ["link_password", "[FILTERED]"], ["unique_token", "[FILTERED]"], ["user_id", 2], ["created_at", "2024-01-16 12:27:37.657155"], ["updated_at", "2024-01-16 12:27:37.657155"]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Load (1.8ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mLink Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "links" WHERE "links"."unique_token" = ? LIMIT ?[0m  [["unique_token", "[FILTERED]"], ["LIMIT", 1]]
+  ↳ app/models/concerns/unique_token.rb:11:in `generate_unique_token'
+  [1m[36mLink Create (0.2ms)[0m  [1m[32mINSERT INTO "links" ("link_name", "url", "link_type", "expires_at", "link_password", "unique_token", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?) RETURNING "id"[0m  [["link_name", "nombre_link"], ["url", "https://www.google.com/"], ["link_type", 0], ["expires_at", nil], ["link_password", "[FILTERED]"], ["unique_token", "[FILTERED]"], ["user_id", 2], ["created_at", "2024-01-16 12:27:37.667869"], ["updated_at", "2024-01-16 12:27:37.667869"]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Load (1.8ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mLink Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "links" WHERE "links"."unique_token" = ? LIMIT ?[0m  [["unique_token", "[FILTERED]"], ["LIMIT", 1]]
+  ↳ app/models/concerns/unique_token.rb:11:in `generate_unique_token'
+  [1m[36mLink Create (0.2ms)[0m  [1m[32mINSERT INTO "links" ("link_name", "url", "link_type", "expires_at", "link_password", "unique_token", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?) RETURNING "id"[0m  [["link_name", "link privado con visita"], ["url", "https://www.google.com/"], ["link_type", 1], ["expires_at", nil], ["link_password", "[FILTERED]"], ["unique_token", "[FILTERED]"], ["user_id", 2], ["created_at", "2024-01-16 12:27:37.677093"], ["updated_at", "2024-01-16 12:27:37.677093"]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Load (2.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mLink Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "links" WHERE "links"."unique_token" = ? LIMIT ?[0m  [["unique_token", "[FILTERED]"], ["LIMIT", 1]]
+  ↳ app/models/concerns/unique_token.rb:11:in `generate_unique_token'
+  [1m[36mLink Create (0.2ms)[0m  [1m[32mINSERT INTO "links" ("link_name", "url", "link_type", "expires_at", "link_password", "unique_token", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?) RETURNING "id"[0m  [["link_name", "link efimero"], ["url", "https://www.google.com/"], ["link_type", 2], ["expires_at", nil], ["link_password", "[FILTERED]"], ["unique_token", "[FILTERED]"], ["user_id", 2], ["created_at", "2024-01-16 12:27:37.687537"], ["updated_at", "2024-01-16 12:27:37.687537"]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/models/concerns/unique_token.rb:11:in `generate_unique_token'
+  [1m[36mLink Exists? (1.0ms)[0m  [1m[34mSELECT 1 AS one FROM "links" WHERE "links"."unique_token" = ? LIMIT ?[0m  [["unique_token", "[FILTERED]"], ["LIMIT", 1]]
+  ↳ app/models/concerns/unique_token.rb:11:in `generate_unique_token'
+  [1m[36mLink Create (0.2ms)[0m  [1m[32mINSERT INTO "links" ("link_name", "url", "link_type", "expires_at", "link_password", "unique_token", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?) RETURNING "id"[0m  [["link_name", "link temporal vencido"], ["url", "https://www.google.com/"], ["link_type", 3], ["expires_at", "2023-12-01 11:01:00"], ["link_password", "[FILTERED]"], ["unique_token", "[FILTERED]"], ["user_id", 2], ["created_at", "2024-01-16 12:27:37.695323"], ["updated_at", "2024-01-16 12:27:37.695323"]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Load (2.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mLink Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "links" WHERE "links"."unique_token" = ? LIMIT ?[0m  [["unique_token", "[FILTERED]"], ["LIMIT", 1]]
+  ↳ app/models/concerns/unique_token.rb:11:in `generate_unique_token'
+  [1m[36mLink Create (0.2ms)[0m  [1m[32mINSERT INTO "links" ("link_name", "url", "link_type", "expires_at", "link_password", "unique_token", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?) RETURNING "id"[0m  [["link_name", "link temporal valido"], ["url", "https://www.google.com/"], ["link_type", 3], ["expires_at", "2024-12-01 11:01:00"], ["link_password", "[FILTERED]"], ["unique_token", "[FILTERED]"], ["user_id", 2], ["created_at", "2024-01-16 12:27:37.708231"], ["updated_at", "2024-01-16 12:27:37.708231"]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mLink Load (2.0ms)[0m  [1m[34mSELECT "links".* FROM "links" WHERE "links"."id" = ? LIMIT ?[0m  [["id", 12], ["LIMIT", 1]]
+  [1m[36mVisitInfo Create (0.2ms)[0m  [1m[32mINSERT INTO "visit_infos" ("ip_address", "visited_at", "link_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?) RETURNING "id"[0m  [["ip_address", "192.168.0.1"], ["visited_at", "2023-12-11 14:19:11.107360"], ["link_id", 12], ["created_at", "2024-01-16 12:27:37.739560"], ["updated_at", "2024-01-16 12:27:37.739560"]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mLink Load (1.7ms)[0m  [1m[34mSELECT "links".* FROM "links" WHERE "links"."id" = ? LIMIT ?[0m  [["id", 12], ["LIMIT", 1]]
+  [1m[36mVisitInfo Create (0.2ms)[0m  [1m[32mINSERT INTO "visit_infos" ("ip_address", "visited_at", "link_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?) RETURNING "id"[0m  [["ip_address", "127.0.0.1"], ["visited_at", "2023-12-10 14:19:11.107360"], ["link_id", 12], ["created_at", "2024-01-16 12:27:37.747514"], ["updated_at", "2024-01-16 12:27:37.747514"]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mLink Load (1.8ms)[0m  [1m[34mSELECT "links".* FROM "links" WHERE "links"."id" = ? LIMIT ?[0m  [["id", 12], ["LIMIT", 1]]
+  [1m[36mVisitInfo Create (0.2ms)[0m  [1m[32mINSERT INTO "visit_infos" ("ip_address", "visited_at", "link_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?) RETURNING "id"[0m  [["ip_address", "127.0.0.1"], ["visited_at", "2023-12-09 14:19:11.107360"], ["link_id", 12], ["created_at", "2024-01-16 12:27:37.755534"], ["updated_at", "2024-01-16 12:27:37.755534"]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mLink Load (1.8ms)[0m  [1m[34mSELECT "links".* FROM "links" WHERE "links"."id" = ? LIMIT ?[0m  [["id", 12], ["LIMIT", 1]]
+  [1m[36mVisitInfo Create (0.1ms)[0m  [1m[32mINSERT INTO "visit_infos" ("ip_address", "visited_at", "link_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?) RETURNING "id"[0m  [["ip_address", "127.0.0.1"], ["visited_at", "2023-12-08 14:19:11.107360"], ["link_id", 12], ["created_at", "2024-01-16 12:27:37.763355"], ["updated_at", "2024-01-16 12:27:37.763355"]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mLink Load (2.0ms)[0m  [1m[34mSELECT "links".* FROM "links" WHERE "links"."id" = ? LIMIT ?[0m  [["id", 12], ["LIMIT", 1]]
+  [1m[36mVisitInfo Create (0.2ms)[0m  [1m[32mINSERT INTO "visit_infos" ("ip_address", "visited_at", "link_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?) RETURNING "id"[0m  [["ip_address", "127.0.0.1"], ["visited_at", "2023-12-07 14:19:11.107360"], ["link_id", 12], ["created_at", "2024-01-16 12:27:37.771654"], ["updated_at", "2024-01-16 12:27:37.771654"]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mLink Load (2.1ms)[0m  [1m[34mSELECT "links".* FROM "links" WHERE "links"."id" = ? LIMIT ?[0m  [["id", 12], ["LIMIT", 1]]
+  [1m[36mVisitInfo Create (0.2ms)[0m  [1m[32mINSERT INTO "visit_infos" ("ip_address", "visited_at", "link_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?) RETURNING "id"[0m  [["ip_address", "127.0.0.1"], ["visited_at", "2023-12-06 14:19:11.107360"], ["link_id", 12], ["created_at", "2024-01-16 12:27:37.779702"], ["updated_at", "2024-01-16 12:27:37.779702"]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mLink Load (1.8ms)[0m  [1m[34mSELECT "links".* FROM "links" WHERE "links"."id" = ? LIMIT ?[0m  [["id", 12], ["LIMIT", 1]]
+  [1m[36mVisitInfo Create (0.2ms)[0m  [1m[32mINSERT INTO "visit_infos" ("ip_address", "visited_at", "link_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?) RETURNING "id"[0m  [["ip_address", "127.0.0.1"], ["visited_at", "2023-12-05 14:19:11.107360"], ["link_id", 12], ["created_at", "2024-01-16 12:27:37.787722"], ["updated_at", "2024-01-16 12:27:37.787722"]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mLink Load (1.9ms)[0m  [1m[34mSELECT "links".* FROM "links" WHERE "links"."id" = ? LIMIT ?[0m  [["id", 12], ["LIMIT", 1]]
+  [1m[36mVisitInfo Create (0.2ms)[0m  [1m[32mINSERT INTO "visit_infos" ("ip_address", "visited_at", "link_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?) RETURNING "id"[0m  [["ip_address", "10.0.0.1"], ["visited_at", "2023-12-10 14:19:11.107360"], ["link_id", 12], ["created_at", "2024-01-16 12:27:37.795624"], ["updated_at", "2024-01-16 12:27:37.795624"]]
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mLink Load (2.0ms)[0m  [1m[34mSELECT "links".* FROM "links" WHERE "links"."id" = ? LIMIT ?[0m  [["id", 12], ["LIMIT", 1]]
+  [1m[36mVisitInfo Create (0.2ms)[0m  [1m[32mINSERT INTO "visit_infos" ("ip_address", "visited_at", "link_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?) RETURNING "id"[0m  [["ip_address", "10.0.0.1"], ["visited_at", "2023-12-10 14:19:11.107360"], ["link_id", 12], ["created_at", "2024-01-16 12:27:37.803717"], ["updated_at", "2024-01-16 12:27:37.803717"]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mLink Load (1.8ms)[0m  [1m[34mSELECT "links".* FROM "links" WHERE "links"."id" = ? LIMIT ?[0m  [["id", 12], ["LIMIT", 1]]
+  [1m[36mVisitInfo Create (0.2ms)[0m  [1m[32mINSERT INTO "visit_infos" ("ip_address", "visited_at", "link_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?) RETURNING "id"[0m  [["ip_address", "10.0.0.1"], ["visited_at", "2023-12-10 14:19:11.107360"], ["link_id", 12], ["created_at", "2024-01-16 12:27:37.813917"], ["updated_at", "2024-01-16 12:27:37.813917"]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mcommit transaction[0m
+Started GET "/" for 127.0.0.1 at 2024-01-16 09:27:59 -0300
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by DashboardController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+Completed 401 Unauthorized in 72ms (ActiveRecord: 3.0ms | Allocations: 20857)
+
+
+Started GET "/users/sign_in" for 127.0.0.1 at 2024-01-16 09:27:59 -0300
+Processing by Devise::SessionsController#new as HTML
+  Rendering layout layouts/devise/sessions.html.erb
+  Rendering devise/sessions/new.html.erb within layouts/devise/sessions
+  Rendered devise/shared/_links.html.erb (Duration: 1.7ms | Allocations: 574)
+  Rendered devise/sessions/new.html.erb within layouts/devise/sessions (Duration: 8.7ms | Allocations: 2690)
+  Rendered layout layouts/devise/sessions.html.erb (Duration: 106.3ms | Allocations: 39610)
+Completed 200 OK in 115ms (Views: 113.1ms | ActiveRecord: 0.0ms | Allocations: 42090)
+
+
+Started POST "/users/sign_in" for 127.0.0.1 at 2024-01-16 09:28:08 -0300
+Processing by Devise::SessionsController#create as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]", "user"=>{"login"=>"sinlinks", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Confirmar"}
+Completed 401 Unauthorized in 3ms (ActiveRecord: 0.0ms | Allocations: 458)
+
+
+Processing by Devise::SessionsController#new as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]", "user"=>{"login"=>"sinlinks", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Confirmar"}
+  Rendering layout layouts/devise/sessions.html.erb
+  Rendering devise/sessions/new.html.erb within layouts/devise/sessions
+  Rendered devise/shared/_links.html.erb (Duration: 1.2ms | Allocations: 122)
+  Rendered devise/sessions/new.html.erb within layouts/devise/sessions (Duration: 6.1ms | Allocations: 682)
+  Rendered layout layouts/devise/sessions.html.erb (Duration: 14.9ms | Allocations: 2706)
+Completed 200 OK in 19ms (Views: 16.3ms | ActiveRecord: 0.0ms | Allocations: 3161)
+
+
+Started POST "/users/sign_in" for 127.0.0.1 at 2024-01-16 09:28:17 -0300
+Processing by Devise::SessionsController#create as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]", "user"=>{"login"=>"sinlinks", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Confirmar"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE (lower(username) = 'sinlinks' OR lower(email) = 'sinlinks') ORDER BY "users"."id" ASC LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/models/user.rb:19:in `find_first_by_auth_conditions'
+Redirected to http://127.0.0.1:3000/
+Completed 303 See Other in 358ms (ActiveRecord: 0.4ms | Allocations: 2887)
+
+
+Started GET "/" for 127.0.0.1 at 2024-01-16 09:28:17 -0300
+Processing by DashboardController#index as TURBO_STREAM
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  Rendering dashboard/index.html.erb within layouts/application
+  Rendered dashboard/index.html.erb within layouts/application (Duration: 0.8ms | Allocations: 182)
+  Rendered layout layouts/application.html.erb (Duration: 7.5ms | Allocations: 2873)
+Completed 200 OK in 18ms (Views: 11.9ms | ActiveRecord: 0.3ms | Allocations: 4937)
+
+
+Started GET "/links/2" for 127.0.0.1 at 2024-01-16 09:28:32 -0300
+Processing by LinksController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mLink Load (0.3ms)[0m  [1m[34mSELECT "links".* FROM "links" WHERE "links"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/links_controller.rb:79:in `set_link'
+  [1m[36mCACHE Link Load (0.0ms)[0m  [1m[34mSELECT "links".* FROM "links" WHERE "links"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/links_controller.rb:12:in `show'
+  [1m[36mVisitInfo Count (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "visit_infos" WHERE "visit_infos"."link_id" = ?[0m  [["link_id", 2]]
+  ↳ app/controllers/links_controller.rb:95:in `filter_visit_infos_by_parameters'
+  [1m[36mCACHE VisitInfo Count (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "visit_infos" WHERE "visit_infos"."link_id" = ?[0m  [["link_id", 2]]
+  ↳ app/controllers/links_controller.rb:16:in `show'
+  Rendering layout layouts/application.html.erb
+  Rendering links/show.html.erb within layouts/application
+  [1m[36mVisitInfo Load (0.2ms)[0m  [1m[34mSELECT "visit_infos".* FROM "visit_infos" WHERE "visit_infos"."link_id" = ? ORDER BY "visit_infos"."visited_at" DESC LIMIT ? OFFSET ?[0m  [["link_id", 2], ["LIMIT", 5], ["OFFSET", 0]]
+  ↳ app/views/links/show.html.erb:98
+  Rendered links/show.html.erb within layouts/application (Duration: 38.7ms | Allocations: 3769)
+  Rendered layout layouts/application.html.erb (Duration: 42.4ms | Allocations: 5904)
+Completed 200 OK in 137ms (Views: 66.5ms | ActiveRecord: 3.0ms | Allocations: 26260)
+
+
+Started GET "/links/2" for 127.0.0.1 at 2024-01-16 09:40:19 -0300
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by LinksController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mLink Load (0.1ms)[0m  [1m[34mSELECT "links".* FROM "links" WHERE "links"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/links_controller.rb:79:in `set_link'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/links_controller.rb:80:in `set_link'
+Redirected to http://127.0.0.1:3000/
+Filter chain halted as :set_link rendered or redirected
+Completed 302 Found in 118ms (ActiveRecord: 4.0ms | Allocations: 37511)
+
+
+Started GET "/" for 127.0.0.1 at 2024-01-16 09:40:19 -0300
+Processing by DashboardController#index as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  Rendering dashboard/index.html.erb within layouts/application
+  Rendered dashboard/index.html.erb within layouts/application (Duration: 1.0ms | Allocations: 275)
+  Rendered layout layouts/application.html.erb (Duration: 84.0ms | Allocations: 38247)
+Completed 200 OK in 94ms (Views: 89.2ms | ActiveRecord: 0.1ms | Allocations: 41357)
+
+
+Started GET "/1" for 127.0.0.1 at 2024-01-16 09:40:27 -0300
+  
+ActionController::RoutingError (No route matches [GET] "/1"):
+  
+Started GET "/liniks/1" for 127.0.0.1 at 2024-01-16 09:40:55 -0300
+  
+ActionController::RoutingError (No route matches [GET] "/liniks/1"):
+  
+Started GET "/links/1" for 127.0.0.1 at 2024-01-16 09:41:05 -0300
+Processing by LinksController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mLink Load (0.2ms)[0m  [1m[34mSELECT "links".* FROM "links" WHERE "links"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/links_controller.rb:79:in `set_link'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/links_controller.rb:80:in `set_link'
+Redirected to http://127.0.0.1:3000/
+Filter chain halted as :set_link rendered or redirected
+Completed 302 Found in 26ms (ActiveRecord: 0.5ms | Allocations: 2395)
+
+
+Started GET "/" for 127.0.0.1 at 2024-01-16 09:41:05 -0300
+Processing by DashboardController#index as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  Rendering dashboard/index.html.erb within layouts/application
+  Rendered dashboard/index.html.erb within layouts/application (Duration: 0.2ms | Allocations: 30)
+  Rendered layout layouts/application.html.erb (Duration: 6.2ms | Allocations: 2172)
+Completed 200 OK in 11ms (Views: 7.2ms | ActiveRecord: 0.1ms | Allocations: 3774)
+
+
+Started GET "/links/24" for 127.0.0.1 at 2024-01-16 09:41:14 -0300
+Processing by LinksController#show as HTML
+  Parameters: {"id"=>"24"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mLink Load (0.1ms)[0m  [1m[34mSELECT "links".* FROM "links" WHERE "links"."id" = ? LIMIT ?[0m  [["id", 24], ["LIMIT", 1]]
+  ↳ app/controllers/links_controller.rb:79:in `set_link'
+Completed 404 Not Found in 7ms (ActiveRecord: 0.2ms | Allocations: 2199)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find Link with 'id'=24):
+  
+app/controllers/links_controller.rb:79:in `set_link'
+Started DELETE "/users/sign_out" for 127.0.0.1 at 2024-01-16 09:41:30 -0300
+Processing by Devise::SessionsController#destroy as TURBO_STREAM
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+Redirected to http://127.0.0.1:3000/
+Completed 303 See Other in 10ms (ActiveRecord: 0.1ms | Allocations: 3327)
+
+
+Started GET "/" for 127.0.0.1 at 2024-01-16 09:41:30 -0300
+Processing by DashboardController#index as TURBO_STREAM
+Completed 401 Unauthorized in 3ms (ActiveRecord: 0.0ms | Allocations: 380)
+
+
+Started GET "/users/sign_in" for 127.0.0.1 at 2024-01-16 09:41:30 -0300
+Processing by Devise::SessionsController#new as TURBO_STREAM
+  Rendering layout layouts/devise/sessions.html.erb
+  Rendering devise/sessions/new.html.erb within layouts/devise/sessions
+  Rendered devise/shared/_links.html.erb (Duration: 1.6ms | Allocations: 564)
+  Rendered devise/sessions/new.html.erb within layouts/devise/sessions (Duration: 7.9ms | Allocations: 2313)
+  Rendered layout layouts/devise/sessions.html.erb (Duration: 12.0ms | Allocations: 4639)
+Completed 200 OK in 16ms (Views: 14.0ms | ActiveRecord: 0.0ms | Allocations: 5813)
+
+
+Started POST "/users/sign_in" for 127.0.0.1 at 2024-01-16 09:41:41 -0300
+Processing by Devise::SessionsController#create as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]", "user"=>{"login"=>"conlinks", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Confirmar"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE (lower(username) = 'conlinks' OR lower(email) = 'conlinks') ORDER BY "users"."id" ASC LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/models/user.rb:19:in `find_first_by_auth_conditions'
+Redirected to http://127.0.0.1:3000/
+Completed 303 See Other in 360ms (ActiveRecord: 0.5ms | Allocations: 2438)
+
+
+Started GET "/" for 127.0.0.1 at 2024-01-16 09:41:41 -0300
+Processing by DashboardController#index as TURBO_STREAM
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  Rendering dashboard/index.html.erb within layouts/application
+  Rendered dashboard/index.html.erb within layouts/application (Duration: 0.2ms | Allocations: 30)
+  Rendered layout layouts/application.html.erb (Duration: 4.6ms | Allocations: 2141)
+Completed 200 OK in 9ms (Views: 5.2ms | ActiveRecord: 0.1ms | Allocations: 3806)
+
+
+Started GET "/links" for 127.0.0.1 at 2024-01-16 09:41:46 -0300
+Processing by LinksController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mLink Count (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "links" WHERE "links"."user_id" = ?[0m  [["user_id", 2]]
+  ↳ app/controllers/links_controller.rb:7:in `index'
+  Rendering layout layouts/application.html.erb
+  Rendering links/index.html.erb within layouts/application
+  [1m[36mLink Load (0.5ms)[0m  [1m[34mSELECT "links".* FROM "links" WHERE "links"."user_id" = ? ORDER BY "links"."created_at" DESC LIMIT ? OFFSET ?[0m  [["user_id", 2], ["LIMIT", 5], ["OFFSET", 0]]
+  ↳ app/views/links/index.html.erb:106
+  Rendered links/index.html.erb within layouts/application (Duration: 9.6ms | Allocations: 1917)
+  Rendered layout layouts/application.html.erb (Duration: 15.9ms | Allocations: 4030)
+Completed 200 OK in 29ms (Views: 17.3ms | ActiveRecord: 0.9ms | Allocations: 6503)
+
+
+Started GET "/links/15" for 127.0.0.1 at 2024-01-16 09:41:47 -0300
+Processing by LinksController#show as HTML
+  Parameters: {"id"=>"15"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mLink Load (0.1ms)[0m  [1m[34mSELECT "links".* FROM "links" WHERE "links"."id" = ? LIMIT ?[0m  [["id", 15], ["LIMIT", 1]]
+  ↳ app/controllers/links_controller.rb:79:in `set_link'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/links_controller.rb:80:in `set_link'
+  [1m[36mCACHE Link Load (0.0ms)[0m  [1m[34mSELECT "links".* FROM "links" WHERE "links"."id" = ? LIMIT ?[0m  [["id", 15], ["LIMIT", 1]]
+  ↳ app/controllers/links_controller.rb:12:in `show'
+  [1m[36mVisitInfo Count (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "visit_infos" WHERE "visit_infos"."link_id" = ?[0m  [["link_id", 15]]
+  ↳ app/controllers/links_controller.rb:99:in `filter_visit_infos_by_parameters'
+  [1m[36mCACHE VisitInfo Count (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "visit_infos" WHERE "visit_infos"."link_id" = ?[0m  [["link_id", 15]]
+  ↳ app/controllers/links_controller.rb:16:in `show'
+  Rendering layout layouts/application.html.erb
+  Rendering links/show.html.erb within layouts/application
+  [1m[36mVisitInfo Load (0.2ms)[0m  [1m[34mSELECT "visit_infos".* FROM "visit_infos" WHERE "visit_infos"."link_id" = ? ORDER BY "visit_infos"."visited_at" DESC LIMIT ? OFFSET ?[0m  [["link_id", 15], ["LIMIT", 5], ["OFFSET", 0]]
+  ↳ app/views/links/show.html.erb:98
+  Rendered links/show.html.erb within layouts/application (Duration: 6.8ms | Allocations: 3737)
+  Rendered layout layouts/application.html.erb (Duration: 11.1ms | Allocations: 5874)
+Completed 200 OK in 31ms (Views: 11.8ms | ActiveRecord: 1.1ms | Allocations: 12281)
+
+

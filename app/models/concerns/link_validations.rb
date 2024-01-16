@@ -9,17 +9,7 @@ module LinkValidations
         validate :expiration_date_cannot_be_in_the_past, if: :temporal_link?
     end
 
-    HUMANIZED_ATTRIBUTES = {
-        link_name: "Nombre del link",
-        link_type: "Tipo de link",
-        expires_at: "Expira",
-        link_password: "Contraseña",
-        unique_token: "Token único"
-    }.freeze
-
-    def self.human_attribute_name(attr, options = {})
-        HUMANIZED_ATTRIBUTES[attr.to_sym] || super
-    end
+    
 
     def url_not_same_as_current_domain
         return unless url.present?

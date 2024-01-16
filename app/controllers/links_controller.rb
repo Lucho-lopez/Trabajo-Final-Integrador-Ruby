@@ -77,6 +77,10 @@ class LinksController < ApplicationController
 
     def set_link
       @link = Link.find(params[:id])
+      unless @link.user == current_user
+        flash[:alert] = "No tienes permisos para acceder a este enlace."
+        redirect_to root_path
+      end
     end
 
     def filter_visit_infos_by_parameters
