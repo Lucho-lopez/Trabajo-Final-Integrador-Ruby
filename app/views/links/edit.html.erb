@@ -1,52 +1,14 @@
-<!DOCTYPE html>
-<html>
-<head>
-  <style>
-    body {
-      font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-      padding: 0;
-      background-color: #f5f5f5;
-      color: #333;
-    }
-    h1 {
-      font-size: 24px;
-      margin-bottom: 20px;
-      text-align: center;
-    }
-    /* Estilos para el formulario */
-    form {
-      background-color: white;
-      padding: 20px;
-      border-radius: 8px;
-      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    }
-    /* Estilos para los enlaces */
-    a {
-      display: inline-block;
-      text-align: center;
-      width: 100%;
-    }
-    span {
-      padding: 8px 20px;
-      background-color: #4CAF50;
-      color: white;
-      border-radius: 4px;
-      text-decoration: none;
-      transition: background-color 0.3s ease;
-      display: inline-block;
-    }
-    span:hover {
-      background-color: #45a049;
-    }
-  </style>
-</head>
-<body>
+<% content_for :head do %>
+  <%= stylesheet_link_tag "layouts/links", "data-turbo-track": "reload" %>
+<% end %>
+<%= content_for :page_title do %>Editar Link | ChqTo<%end %>
+
+<div>
   <h1>Editar link</h1>
 
   <%= render "form", link: @link %>
 
-  <a href="<%= links_path %>">
-    <span>Volver a links</span>
-  </a>
-</body>
-</html>
+  <div class="link-container">
+    <a href="<%= links_path %>" class="button button-primary">Volver a links</a>
+  </div>
+</div>

@@ -1,22 +1,11 @@
-<h1>Chq.to</h1>
-<p>Esta es una aplicacion en la que se pueden acortar links y compartirlos de una manera segura y sencilla</p>
-<a href="<%= links_path %>" class="button button-primary" >
-  <span>Ver links</span>
-</a>
+<% content_for :head do %>
+  <%= stylesheet_link_tag "layouts/links", "data-turbo-track": "reload" %>
+<% end %>
 
-<style>
-  .button {
-    display: inline-block;
-    padding: 8px 16px;
-    text-decoration: none;
-    border-radius: 5px;
-  }
-  .button-primary {
-    background-color: #0DA7D0;
-    color: white;
-    text-align: center;
-  }
-  .button-primary:hover {
-    background-color: #0C99BE;
-  }
-</style>
+<div style="display:flex; flex-direction:column; align-items:center;">
+  <h1>Chq.to</h1>
+  <p>Esta es una aplicacion en la que se pueden acortar links y compartirlos de una manera segura y sencilla</p>
+  <a style="margin-top:1em;" href="<%= links_path %>" class="button button-primary" >
+    Ver links
+  </a>
+</div>
