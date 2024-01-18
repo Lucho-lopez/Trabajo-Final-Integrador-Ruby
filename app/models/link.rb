@@ -2,7 +2,8 @@ class Link < ApplicationRecord
   belongs_to :user
   has_many :visit_infos, dependent: :destroy
   before_save :encrypt_password_if_present
-
+  before_create :generate_unique_token
+  
   include UniqueToken
   include LinkAccess
   include LinkValidations
@@ -21,6 +22,16 @@ class Link < ApplicationRecord
     link_password: "Contraseña",
     unique_token: "Token único"
 }.freeze
+
+def generate_unique_token
+  new_token = SecureRandom.hex(3)
+
+  while self.class.exists?(unique_token: new_token)
+    new_token = SecureRandom.hex(3)
+  end
+
+  self.unique_token = new_token
+end
 
 def self.human_attribute_name(attr, options = {})
     HUMANIZED_ATTRIBUTES[attr.to_sym] || super
