@@ -39381,3 +39381,98 @@ Redirected to https://www.google.com
 Completed 302 Found in 13ms (ActiveRecord: 3.7ms | Allocations: 2422)
 
 
+Started GET "/users/sign_up" for 127.0.0.1 at 2024-01-18 20:21:23 -0300
+  [1m[36mActiveRecord::SchemaMigration Load (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Devise::RegistrationsController#new as HTML
+  Rendering layout layouts/devise.html.erb
+  Rendering devise/registrations/new.html.erb within layouts/devise
+  Rendered devise/shared/_error_messages.html.erb (Duration: 2.7ms | Allocations: 234)
+  Rendered devise/registrations/new.html.erb within layouts/devise (Duration: 14.0ms | Allocations: 2788)
+  Rendered layout layouts/devise.html.erb (Duration: 256.8ms | Allocations: 42914)
+Completed 200 OK in 537ms (Views: 461.0ms | ActiveRecord: 4.6ms | Allocations: 93348)
+
+
+Started POST "/users" for 127.0.0.1 at 2024-01-18 20:21:33 -0300
+Processing by Devise::RegistrationsController#create as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]", "user"=>{"username"=>"pepitoeeeee", "email"=>"pee@hotmeee.com222", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "commit"=>"Registrarse"}
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Exists? (3.8ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE LOWER("users"."username") = LOWER(?) LIMIT ?[0m  [["username", "pepitoeeeee"], ["LIMIT", 1]]
+  [1m[36mUser Exists? (0.7ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "pee@hotmeee.com222"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mrollback transaction[0m
+  Rendering layout layouts/devise.html.erb
+  Rendering devise/registrations/new.html.erb within layouts/devise
+  Rendered devise/shared/_error_messages.html.erb (Duration: 2.0ms | Allocations: 557)
+  Rendered devise/registrations/new.html.erb within layouts/devise (Duration: 9.5ms | Allocations: 1765)
+  Rendered layout layouts/devise.html.erb (Duration: 145.7ms | Allocations: 4304)
+Completed 422 Unprocessable Entity in 584ms (Views: 147.4ms | ActiveRecord: 4.7ms | Allocations: 15084)
+
+
+Started POST "/users" for 127.0.0.1 at 2024-01-18 20:21:41 -0300
+Processing by Devise::RegistrationsController#create as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]", "user"=>{"username"=>"pepitoeeeee", "email"=>"pee@hotmeee.com222", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "commit"=>"Registrarse"}
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Exists? (2.7ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE LOWER("users"."username") = LOWER(?) LIMIT ?[0m  [["username", "pepitoeeeee"], ["LIMIT", 1]]
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "pee@hotmeee.com222"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.4ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "reset_password_token", "reset_password_sent_at", "remember_created_at", "created_at", "updated_at", "username") VALUES (?, ?, ?, ?, ?, ?, ?, ?) RETURNING "id"[0m  [["email", "pee@hotmeee.com222"], ["encrypted_password", "[FILTERED]"], ["reset_password_token", "[FILTERED]"], ["reset_password_sent_at", "[FILTERED]"], ["remember_created_at", nil], ["created_at", "2024-01-18 23:21:41.980528"], ["updated_at", "2024-01-18 23:21:41.980528"], ["username", "pepitoeeeee"]]
+  [1m[36mTRANSACTION (62.5ms)[0m  [1m[36mcommit transaction[0m
+Redirected to http://127.0.0.1:3000/
+Completed 303 See Other in 443ms (ActiveRecord: 65.7ms | Allocations: 8503)
+
+
+Started GET "/" for 127.0.0.1 at 2024-01-18 20:21:42 -0300
+Processing by DashboardController#index as TURBO_STREAM
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  Rendering dashboard/index.html.erb within layouts/application
+  Rendered dashboard/index.html.erb within layouts/application (Duration: 6.0ms | Allocations: 1005)
+  Rendered layout layouts/application.html.erb (Duration: 15.3ms | Allocations: 3402)
+Completed 200 OK in 29ms (Views: 18.6ms | ActiveRecord: 0.3ms | Allocations: 5896)
+
+
+Started GET "/" for 127.0.0.1 at 2024-01-18 20:21:42 -0300
+Processing by DashboardController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  Rendering dashboard/index.html.erb within layouts/application
+  Rendered dashboard/index.html.erb within layouts/application (Duration: 5.6ms | Allocations: 734)
+  Rendered layout layouts/application.html.erb (Duration: 18.4ms | Allocations: 2647)
+Completed 200 OK in 31ms (Views: 19.6ms | ActiveRecord: 0.2ms | Allocations: 4241)
+
+
+Started GET "/links" for 127.0.0.1 at 2024-01-18 20:21:43 -0300
+Processing by LinksController#index as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+Completed 500 Internal Server Error in 217ms (ActiveRecord: 0.1ms | Allocations: 3380)
+
+
+  
+NameError (uninitialized constant Link::UniqueToken):
+  
+app/models/link.rb:7:in `<class:Link>'
+app/models/link.rb:1:in `<main>'
+app/controllers/links_controller.rb:7:in `index'
+Started GET "/links" for 127.0.0.1 at 2024-01-18 20:22:18 -0300
+Processing by LinksController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  [1m[36mLink Count (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "links" WHERE "links"."user_id" = ?[0m  [["user_id", 5]]
+  ↳ app/controllers/links_controller.rb:7:in `index'
+  Rendering layout layouts/application.html.erb
+  Rendering links/index.html.erb within layouts/application
+  [1m[36mLink Load (0.2ms)[0m  [1m[34mSELECT "links".* FROM "links" WHERE "links"."user_id" = ? ORDER BY "links"."created_at" DESC LIMIT ? OFFSET ?[0m  [["user_id", 5], ["LIMIT", 5], ["OFFSET", 0]]
+  ↳ app/views/links/index.html.erb:20
+  Rendered links/index.html.erb within layouts/application (Duration: 4.5ms | Allocations: 1749)
+  Rendered layout layouts/application.html.erb (Duration: 34.2ms | Allocations: 16581)
+Completed 200 OK in 72ms (Views: 36.2ms | ActiveRecord: 3.4ms | Allocations: 28146)
+
+
+Started GET "/links/new" for 127.0.0.1 at 2024-01-18 20:22:19 -0300
+Processing by LinksController#new as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  Rendering links/new.html.erb within layouts/application
+  Rendered links/_form.html.erb (Duration: 100.5ms | Allocations: 1926)
+  Rendered links/new.html.erb within layouts/application (Duration: 104.3ms | Allocations: 3014)
+  Rendered layout layouts/application.html.erb (Duration: 110.2ms | Allocations: 4958)
+Completed 200 OK in 163ms (Views: 111.1ms | ActiveRecord: 0.5ms | Allocations: 16407)
+
+

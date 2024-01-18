@@ -4,7 +4,7 @@ class Link < ApplicationRecord
   before_save :encrypt_password_if_present
   before_create :generate_unique_token
   
-  include UniqueToken
+
   include LinkAccess
   include LinkValidations
 
