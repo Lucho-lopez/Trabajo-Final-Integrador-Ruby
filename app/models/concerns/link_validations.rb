@@ -7,6 +7,7 @@ module LinkValidations
         validates :expires_at, presence: true, if: :temporal_link?
         validate :url_not_same_as_current_domain
         validate :expiration_date_cannot_be_in_the_past, if: :temporal_link?
+        validates_uniqueness_of :unique_token
     end
 
     
